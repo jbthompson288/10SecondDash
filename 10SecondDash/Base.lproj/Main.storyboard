@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,97 +22,33 @@
                                 <frame key="frameInset" minY="28" width="375" height="213"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="doq-hm-a6f">
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q6z-58-6Y5" userLabel="Human Dash Button">
-                                        <state key="normal" title="Human Dash"/>
-                                        <connections>
-                                            <segue destination="yHy-hl-nws" kind="show" id="ONn-yd-CMI"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bH-jV-k9R" userLabel="Cheetah Dash Button">
-                                        <state key="normal" title="Cheetah Dash"/>
-                                        <connections>
-                                            <segue destination="JHo-VC-gX5" kind="show" id="4E0-FE-Cze"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Pt-fL-ejd" userLabel="High Scores Button">
-                                        <state key="normal" title="High Scores"/>
-                                        <connections>
-                                            <segue destination="mUe-6f-NxM" kind="show" id="AcE-Fu-4tF"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="gd5-b4-iTL"/>
-                                </constraints>
-                            </stackView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EXh-2D-cdX">
+                                <frame key="frameInset" minX="50" minY="308" width="62" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aVV-Li-2rP">
+                                <frame key="frameInset" minX="255" minY="308" width="62" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ct8-G4-c5F">
+                                <frame key="frameInset" minX="16" minY="496" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="High Scores Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YqN-LN-3j7">
+                                <frame key="frameInset" minX="16" minY="526" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Settings Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="doq-hm-a6f" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="2hV-fn-PzK"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="doq-hm-a6f" secondAttribute="bottom" constant="58" id="b23-EN-iXP"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="doq-hm-a6f" secondAttribute="trailing" id="mfj-He-ic8"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="122.78860569715144"/>
-        </scene>
-        <!--Human Dash-->
-        <scene sceneID="vue-xi-T8f">
-            <objects>
-                <viewController title="Human Dash" id="yHy-hl-nws" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y0B-Xa-tdm"/>
-                        <viewControllerLayoutGuide type="bottom" id="0Ir-Hx-Wex"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="G6I-hV-oBP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hH4-lX-p1S" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="910" y="-313"/>
-        </scene>
-        <!--Cheetah Dash-->
-        <scene sceneID="XdQ-0v-lb4">
-            <objects>
-                <viewController title="Cheetah Dash" id="JHo-VC-gX5" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Clx-oF-GTo"/>
-                        <viewControllerLayoutGuide type="bottom" id="4K6-qa-9iB"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="gKS-B2-wwq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Z6Q-QA-JFS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1679" y="123"/>
-        </scene>
-        <!--High Scores-->
-        <scene sceneID="MXF-FD-rIU">
-            <objects>
-                <viewController title="High Scores" id="mUe-6f-NxM" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ca1-U5-lWN"/>
-                        <viewControllerLayoutGuide type="bottom" id="g0G-dw-qcT"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="hkh-fD-ucQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zb4-8b-IAS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="910" y="694"/>
         </scene>
     </scenes>
 </document>
