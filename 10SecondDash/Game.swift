@@ -7,9 +7,20 @@
 //
 
 import Foundation
+import UIKit
 
-class Game {
-    
-    var avatar: Avatar
-    
-}
+//class Game {
+//    
+//    var avatar: AvatarList
+//    
+//    // MARK: - Animations
+//    
+//    
+//    
+//    
+//    
+//    
+//    
+//    
+//    
+//}

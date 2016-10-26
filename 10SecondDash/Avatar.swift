@@ -8,15 +8,15 @@
 
 import Foundation
 
-enum AvatarList {
-    case Human
-    case Cheetah
+enum AvatarList: String {
+    case human = "humanImage.png"
+    case cheetah = "cheetahImage.png"
 }
 
-class Avatar {
-    
-    let avatar: AvatarList
-    
-    
-    
-}
+//class Avatar {
+//    
+//    let avatar: AvatarList
+//    
+//    
+//    
+//}

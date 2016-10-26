@@ -9,16 +9,41 @@
 import UIKit
 
 class AvatarViewController: UIViewController {
+    
+    @IBOutlet weak var avatarView: UIView!
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // MARK: - Animations
+        let aroundScreen = CAKeyframeAnimation()
+        
+        aroundScreen.keyPath = "position"
+        aroundScreen.path = CGPath(rect: CGRect(x: 35, y: 35, width: view.frame.width - 50, height: view.frame.height - 50), transform: nil)
+        aroundScreen.duration = 4
+        aroundScreen.repeatCount = Float.infinity
+        aroundScreen.calculationMode = kCAAnimationPaced
+        aroundScreen.rotationMode = kCAAnimationRotateAuto
+        
+        self.avatarView.layer.add(aroundScreen, forKey: "around")
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
     }
     
 
