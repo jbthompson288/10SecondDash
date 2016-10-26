@@ -30,7 +30,7 @@ class AvatarViewController: UIViewController {
         let aroundScreen = CAKeyframeAnimation()
         
         aroundScreen.keyPath = "position"
-        aroundScreen.path = CGPath(rect: CGRect(x: 35, y: 35, width: view.frame.width - 50, height: view.frame.height - 50), transform: nil)
+        aroundScreen.path = CGPath(rect: CGRect(x: 35, y: 35, width: view.frame.width - 70, height: view.frame.height - 70), transform: nil)
         aroundScreen.duration = 4
         aroundScreen.repeatCount = Float.infinity
         aroundScreen.calculationMode = kCAAnimationPaced
