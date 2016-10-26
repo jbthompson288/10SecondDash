@@ -41,13 +41,20 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="czk-ye-Icz">
-                                <frame key="frameInset" minX="41" minY="289" width="52" height="52"/>
+                                <frame key="frameInset" minX="76" minY="298" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="H"/>
+                                <connections>
+                                    <segue destination="wbH-G1-Naa" kind="popoverPresentation" animates="NO" popoverAnchorView="czk-ye-Icz" id="sxo-az-HKA">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dvw-OP-drQ">
-                                <frame key="frameInset" minX="274" minY="289" width="52" height="52"/>
+                                <frame key="frameInset" minX="229" minY="298" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="C"/>
                                 <connections>
                                     <segue destination="wbH-G1-Naa" kind="popoverPresentation" animates="NO" popoverAnchorView="Dvw-OP-drQ" id="8fq-zp-ncq">
@@ -278,6 +285,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="KaG-mB-4c9"/>
+        <segue reference="3Fm-0t-PSk"/>
+        <segue reference="sxo-az-HKA"/>
     </inferredMetricsTieBreakers>
 </document>

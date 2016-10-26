@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+enum AvatarList {
+    case Human
+    case Cheetah
+}
+
+class Avatar {
+    
+    let avatar: AvatarList
+    
+    
+    
+}
