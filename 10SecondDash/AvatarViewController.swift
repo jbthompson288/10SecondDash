@@ -11,6 +11,17 @@ import UIKit
 class AvatarViewController: UIViewController {
     
     @IBOutlet weak var avatarView: UIView!
+    @IBOutlet weak var dashLabel: UILabel!
+    @IBOutlet weak var countdownLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var highScoreLabel: UILabel!
+    @IBOutlet weak var enterInitialsLabel: UILabel!
+    @IBOutlet weak var initialsTextField: UITextField!
+    
+    
+    
+    
+    
     
     let avatarSize: CGFloat = 70.0
 

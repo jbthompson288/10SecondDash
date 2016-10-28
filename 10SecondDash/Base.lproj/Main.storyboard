@@ -131,6 +131,12 @@
                     </view>
                     <connections>
                         <outlet property="avatarView" destination="nTD-Jp-0sI" id="BCL-aC-3x8"/>
+                        <outlet property="countdownLabel" destination="zqO-Ms-DnG" id="Ug1-Zl-VOd"/>
+                        <outlet property="dashLabel" destination="JSW-4B-zaO" id="vqO-7t-gr8"/>
+                        <outlet property="enterInitialsLabel" destination="ua4-Zq-vF8" id="EfJ-Bj-RpG"/>
+                        <outlet property="highScoreLabel" destination="ptX-31-PDf" id="tnu-BM-tMx"/>
+                        <outlet property="initialsTextField" destination="bPb-j1-Opm" id="NMv-OO-T8R"/>
+                        <outlet property="scoreLabel" destination="P03-6y-L84" id="HkP-MY-f5P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r15-Wr-APC" userLabel="First Responder" sceneMemberID="firstResponder"/>
