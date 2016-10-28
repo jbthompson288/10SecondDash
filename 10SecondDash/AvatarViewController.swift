@@ -20,23 +20,26 @@ class AvatarViewController: UIViewController {
     
     let avatarSize: CGFloat = 70.0
     
+    var timeRemaining: TimeInterval?
+    
     // MARK: - Dash Countdown Methods
     
-    var timer = Timer()
-    var count = 4
+    var dashTimer = Timer()
+    var dashCount = 4
     
-    func startCountdown(){
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(update), userInfo: nil, repeats: true)
+    func dashStartCountdown(){
+        dashTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(dashUpdate), userInfo: nil, repeats: true)
     }
     
-    func update() {
-        if (count > 1) {
-            count -= 1
-            dashLabel.text = "\(count)"
+    func dashUpdate() {
+        if (dashCount > 1) {
+            dashCount -= 1
+            dashLabel.text = "\(dashCount)"
         } else {
-            timer.invalidate()
+            dashTimer.invalidate()
             dashLabel.text = "DASH!"
             animate()
+            countdownStartCountdown()
         }
     }
     
@@ -56,6 +59,25 @@ class AvatarViewController: UIViewController {
         
     }
     
+    // MARK: - Timer Countdown Methods
+    
+    var countdownTimer = Timer()
+    var countdownCount = 10
+    
+    func countdownStartCountdown(){
+        countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countdownUpdate), userInfo: nil, repeats: true)
+    }
+    
+    func countdownUpdate() {
+        if (countdownCount > 1) {
+            countdownCount -= 1
+            countdownLabel.text = "\(countdownCount)"
+        } else {
+            countdownTimer.invalidate()
+            countdownLabel.text = "DONE!"
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +89,7 @@ class AvatarViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
             
-        startCountdown()
+        dashStartCountdown()
     }
 
     override func viewWillAppear(_ animated: Bool) {
