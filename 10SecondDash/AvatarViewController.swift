@@ -18,11 +18,6 @@ class AvatarViewController: UIViewController {
     @IBOutlet weak var enterInitialsLabel: UILabel!
     @IBOutlet weak var initialsTextField: UITextField!
     
-    
-    
-    
-    
-    
     let avatarSize: CGFloat = 70.0
 
     override func viewDidLoad() {
@@ -31,22 +26,37 @@ class AvatarViewController: UIViewController {
         // Do any additional setup after loading the view.
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
+            
+            // MARK: - Animations
+            let aroundScreen = CAKeyframeAnimation()
+            
+            aroundScreen.keyPath = "position"
+            aroundScreen.path = CGPath(rect: CGRect(x: self.avatarSize / 2, y: self.avatarSize / 2, width: self.view.frame.width - self.avatarSize, height: self.view.frame.height - self.avatarSize), transform: nil)
+            aroundScreen.duration = 4
+            aroundScreen.repeatCount = Float.infinity
+            aroundScreen.calculationMode = kCAAnimationPaced
+            aroundScreen.rotationMode = kCAAnimationRotateAuto
+            
+            self.avatarView.layer.add(aroundScreen, forKey: "around")
+            
+        })
+        
+        
+        
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // MARK: - Animations
-        let aroundScreen = CAKeyframeAnimation()
         
-        aroundScreen.keyPath = "position"
-        aroundScreen.path = CGPath(rect: CGRect(x: avatarSize / 2, y: avatarSize / 2, width: view.frame.width - avatarSize, height: view.frame.height - avatarSize), transform: nil)
-        aroundScreen.duration = 4
-        aroundScreen.repeatCount = Float.infinity
-        aroundScreen.calculationMode = kCAAnimationPaced
-        aroundScreen.rotationMode = kCAAnimationRotateAuto
-        
-        self.avatarView.layer.add(aroundScreen, forKey: "around")
     }
+    
+    
     
 
     /*
