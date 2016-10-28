@@ -19,7 +19,44 @@ class AvatarViewController: UIViewController {
     @IBOutlet weak var initialsTextField: UITextField!
     
     let avatarSize: CGFloat = 70.0
-
+    
+    // MARK: - Dash Countdown Methods
+    
+    var timer = Timer()
+    var count = 4
+    
+    func startCountdown(){
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(update), userInfo: nil, repeats: true)
+    }
+    
+    func update() {
+        if (count > 1) {
+            count -= 1
+            dashLabel.text = "\(count)"
+        } else {
+            timer.invalidate()
+            dashLabel.text = "DASH!"
+            animate()
+        }
+    }
+    
+    // MARK: - Animations Method
+    
+    func animate() {
+        let aroundScreen = CAKeyframeAnimation()
+        
+        aroundScreen.keyPath = "position"
+        aroundScreen.path = CGPath(rect: CGRect(x: self.avatarSize / 2, y: self.avatarSize / 2, width: self.view.frame.width - self.avatarSize, height: self.view.frame.height - self.avatarSize), transform: nil)
+        aroundScreen.duration = 4
+        aroundScreen.repeatCount = Float.infinity
+        aroundScreen.calculationMode = kCAAnimationPaced
+        aroundScreen.rotationMode = kCAAnimationRotateAuto
+        
+        self.avatarView.layer.add(aroundScreen, forKey: "around")
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,25 +66,8 @@ class AvatarViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
             
-            // MARK: - Animations
-            let aroundScreen = CAKeyframeAnimation()
-            
-            aroundScreen.keyPath = "position"
-            aroundScreen.path = CGPath(rect: CGRect(x: self.avatarSize / 2, y: self.avatarSize / 2, width: self.view.frame.width - self.avatarSize, height: self.view.frame.height - self.avatarSize), transform: nil)
-            aroundScreen.duration = 4
-            aroundScreen.repeatCount = Float.infinity
-            aroundScreen.calculationMode = kCAAnimationPaced
-            aroundScreen.rotationMode = kCAAnimationRotateAuto
-            
-            self.avatarView.layer.add(aroundScreen, forKey: "around")
-            
-        })
-        
-        
-        
+        startCountdown()
     }
 
     override func viewWillAppear(_ animated: Bool) {
