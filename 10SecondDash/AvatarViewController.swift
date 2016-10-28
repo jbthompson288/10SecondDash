@@ -12,14 +12,12 @@ class AvatarViewController: UIViewController {
     
     @IBOutlet weak var avatarView: UIView!
     
-    
+    let avatarSize: CGFloat = 70.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        
         
     }
 
@@ -30,20 +28,13 @@ class AvatarViewController: UIViewController {
         let aroundScreen = CAKeyframeAnimation()
         
         aroundScreen.keyPath = "position"
-        aroundScreen.path = CGPath(rect: CGRect(x: 35, y: 35, width: view.frame.width - 70, height: view.frame.height - 70), transform: nil)
+        aroundScreen.path = CGPath(rect: CGRect(x: avatarSize / 2, y: avatarSize / 2, width: view.frame.width - avatarSize, height: view.frame.height - avatarSize), transform: nil)
         aroundScreen.duration = 4
         aroundScreen.repeatCount = Float.infinity
         aroundScreen.calculationMode = kCAAnimationPaced
         aroundScreen.rotationMode = kCAAnimationRotateAuto
         
         self.avatarView.layer.add(aroundScreen, forKey: "around")
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        
     }
     
 
