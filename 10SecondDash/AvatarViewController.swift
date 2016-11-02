@@ -18,6 +18,11 @@ class AvatarViewController: UIViewController {
     @IBOutlet weak var enterInitialsLabel: UILabel!
     @IBOutlet weak var initialsTextField: UITextField!
     
+    @IBOutlet weak var bottomAvatarConstraint: NSLayoutConstraint!
+    @IBOutlet weak var leadingAvatarConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topAvatarConstraint: NSLayoutConstraint!
+    @IBOutlet weak var trailingAvatarConstraint: NSLayoutConstraint!
+    
     let avatarSize: CGFloat = 70.0
     
     var timeRemaining: TimeInterval?
@@ -46,6 +51,11 @@ class AvatarViewController: UIViewController {
     // MARK: - Animations Method
     
     func animate() {
+        
+        //Look into UIKit animation
+        
+        avatarView.removeConstraints([bottomAvatarConstraint, topAvatarConstraint, leadingAvatarConstraint, trailingAvatarConstraint])  
+        
         let aroundScreen = CAKeyframeAnimation()
         
         aroundScreen.keyPath = "position"
@@ -92,9 +102,9 @@ class AvatarViewController: UIViewController {
         dashStartCountdown()
     }
 
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         
     }
     
