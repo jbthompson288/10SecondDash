@@ -19,8 +19,8 @@ class AvatarViewController: UIViewController {
     @IBOutlet weak var initialsTextField: UITextField!
     
     @IBOutlet weak var bottomAvatarConstraint: NSLayoutConstraint!
-    @IBOutlet weak var leadingAvatarConstraint: NSLayoutConstraint!
-    @IBOutlet weak var topAvatarConstraint: NSLayoutConstraint!
+    @IBOutlet weak var heightAvatarConstraint: NSLayoutConstraint!
+    @IBOutlet weak var widthAvatarConstraint: NSLayoutConstraint!
     @IBOutlet weak var trailingAvatarConstraint: NSLayoutConstraint!
     
     let avatarSize: CGFloat = 70.0
@@ -43,6 +43,7 @@ class AvatarViewController: UIViewController {
         } else {
             dashTimer.invalidate()
             dashLabel.text = "DASH!"
+            avatarView.removeConstraints([bottomAvatarConstraint, trailingAvatarConstraint])
             animate()
             countdownStartCountdown()
         }
@@ -53,8 +54,6 @@ class AvatarViewController: UIViewController {
     func animate() {
         
         //Look into UIKit animation
-        
-        avatarView.removeConstraints([bottomAvatarConstraint, topAvatarConstraint, leadingAvatarConstraint, trailingAvatarConstraint])  
         
         let aroundScreen = CAKeyframeAnimation()
         

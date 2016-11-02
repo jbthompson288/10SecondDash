@@ -127,28 +127,30 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nTD-Jp-0sI">
                                 <rect key="frame" x="305" y="597" width="70" height="70"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="Mzd-la-SwM"/>
+                                    <constraint firstAttribute="width" constant="70" id="V2W-f2-SIT"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nTD-Jp-0sI" firstAttribute="leading" secondItem="uRY-CU-KWA" secondAttribute="leading" constant="305" id="0jQ-6v-QsP"/>
-                            <constraint firstItem="nTD-Jp-0sI" firstAttribute="top" secondItem="9Qo-QG-JJN" secondAttribute="bottom" constant="577" id="Hg9-TJ-2iv"/>
-                            <constraint firstItem="sdV-CE-IsP" firstAttribute="top" secondItem="nTD-Jp-0sI" secondAttribute="bottom" id="btc-LI-UXI"/>
-                            <constraint firstAttribute="trailing" secondItem="nTD-Jp-0sI" secondAttribute="trailing" id="fdM-Eb-ULA"/>
+                            <constraint firstAttribute="trailing" secondItem="nTD-Jp-0sI" secondAttribute="trailing" id="FWK-WW-f2S"/>
+                            <constraint firstItem="sdV-CE-IsP" firstAttribute="top" secondItem="nTD-Jp-0sI" secondAttribute="bottom" id="fVd-Bg-mrE"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="avatarView" destination="nTD-Jp-0sI" id="BCL-aC-3x8"/>
-                        <outlet property="bottomAvatarConstraint" destination="btc-LI-UXI" id="pCF-We-gGp"/>
+                        <outlet property="bottomAvatarConstraint" destination="fVd-Bg-mrE" id="zjh-xt-RUd"/>
                         <outlet property="countdownLabel" destination="zqO-Ms-DnG" id="Ug1-Zl-VOd"/>
                         <outlet property="dashLabel" destination="JSW-4B-zaO" id="vqO-7t-gr8"/>
                         <outlet property="enterInitialsLabel" destination="ua4-Zq-vF8" id="EfJ-Bj-RpG"/>
+                        <outlet property="heightAvatarConstraint" destination="Mzd-la-SwM" id="0Wx-7V-5NC"/>
                         <outlet property="highScoreLabel" destination="ptX-31-PDf" id="tnu-BM-tMx"/>
                         <outlet property="initialsTextField" destination="bPb-j1-Opm" id="NMv-OO-T8R"/>
-                        <outlet property="leadingAvatarConstraint" destination="0jQ-6v-QsP" id="vu6-4f-rZe"/>
                         <outlet property="scoreLabel" destination="P03-6y-L84" id="HkP-MY-f5P"/>
-                        <outlet property="topAvatarConstraint" destination="Hg9-TJ-2iv" id="wPe-Yj-3hR"/>
-                        <outlet property="trailingAvatarConstraint" destination="fdM-Eb-ULA" id="1qQ-I3-cow"/>
+                        <outlet property="trailingAvatarConstraint" destination="FWK-WW-f2S" id="iJo-GS-3jX"/>
+                        <outlet property="widthAvatarConstraint" destination="V2W-f2-SIT" id="ATJ-mu-jQu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r15-Wr-APC" userLabel="First Responder" sceneMemberID="firstResponder"/>
