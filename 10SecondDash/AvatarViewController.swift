@@ -28,6 +28,9 @@ class AvatarViewController: UIViewController {
     
     var timeRemaining: TimeInterval?
     
+    var scoreLabelText: Double = 0.00
+    let pointsAdded: Double = 0.25
+    
     // MARK: - Dash Countdown Methods
     
     var dashTimer = Timer()
@@ -60,7 +63,9 @@ class AvatarViewController: UIViewController {
         UIView.animate(withDuration: 0.5, animations: {
             self.avatarView.frame = CGRect(x: endingPosition, y: currentFrame.origin.y, width: currentFrame.width, height: currentFrame.height)
         }, completion:  {(value: Bool) in
-          self.moveToTopLeftAnimation()
+            self.scoreLabelText += self.pointsAdded
+            self.scoreLabel.text = String(self.scoreLabelText)
+            self.moveToTopLeftAnimation()
         })
     }
     
@@ -71,6 +76,8 @@ class AvatarViewController: UIViewController {
         UIView.animate(withDuration: 0.5, animations: {
             self.avatarView.frame = CGRect(x: currentFrame.origin.x, y: endingPosition, width: currentFrame.width, height: currentFrame.height)
         }, completion: {(value: Bool) in
+            self.scoreLabelText += self.pointsAdded
+            self.scoreLabel.text = String(self.scoreLabelText)
             self.moveToTopRightAnimation()
         })
     }
@@ -82,6 +89,8 @@ class AvatarViewController: UIViewController {
         UIView.animate(withDuration: 0.5, animations: {
             self.avatarView.frame = CGRect(x: endingPosition, y: currentFrame.origin.y, width: currentFrame.width, height: currentFrame.height)
         }, completion: {(value: Bool) in
+            self.scoreLabelText += self.pointsAdded
+            self.scoreLabel.text = String(self.scoreLabelText)
             self.moveToBottomRightAnimation()
         })
     }
@@ -93,6 +102,8 @@ class AvatarViewController: UIViewController {
         UIView.animate(withDuration: 0.5, animations: {
             self.avatarView.frame = CGRect(x: currentFrame.origin.x, y: endingPosition, width: currentFrame.width, height: currentFrame.height)
         }, completion: {(value: Bool) in
+            self.scoreLabelText += self.pointsAdded
+            self.scoreLabel.text = String(self.scoreLabelText)
             self.moveToBottomLeftAnimation()
         })
         
