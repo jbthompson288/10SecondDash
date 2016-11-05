@@ -10,6 +10,7 @@ import UIKit
 
 class AvatarViewController: UIViewController {
     
+    @IBOutlet weak var testTapButton: UIButton!
     @IBOutlet weak var avatarView: UIView!
     @IBOutlet weak var dashLabel: UILabel!
     @IBOutlet weak var countdownLabel: UILabel!
@@ -44,17 +45,30 @@ class AvatarViewController: UIViewController {
             dashTimer.invalidate()
             dashLabel.text = "DASH!"
             avatarView.removeConstraints([bottomAvatarConstraint, trailingAvatarConstraint])
-            animate()
             countdownStartCountdown()
+//            animate()
+            moveToBottomLeft()
         }
     }
     
     // MARK: - Animations Method
     
+    func moveToBottomLeft() {
+        let startingPosition = avatarView.frame.origin.x
+        let currentFrame = avatarView.frame
+        let endingPosition = (startingPosition - view.frame.width) + currentFrame.width
+        UIView.animate(withDuration: 0.5, animations: {
+            self.avatarView.frame = CGRect(x: endingPosition, y: currentFrame.origin.y, width: currentFrame.width, height: currentFrame.height)
+            
+        })
+    }
+    
     func animate() {
         
-        //Look into UIKit animation
         
+        
+        //Look into UIKit animation
+
         let aroundScreen = CAKeyframeAnimation()
         
         aroundScreen.keyPath = "position"
@@ -64,8 +78,8 @@ class AvatarViewController: UIViewController {
         aroundScreen.calculationMode = kCAAnimationPaced
         aroundScreen.rotationMode = kCAAnimationRotateAuto
         
-        self.avatarView.layer.add(aroundScreen, forKey: "around")
         
+        self.avatarView.layer.add(aroundScreen, forKey: "around")
     }
     
     // MARK: - Timer Countdown Methods

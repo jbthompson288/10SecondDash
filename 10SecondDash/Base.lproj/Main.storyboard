@@ -132,6 +132,11 @@
                                     <constraint firstAttribute="width" constant="70" id="V2W-f2-SIT"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGs-TG-Vao">
+                                <rect key="frame" x="94" y="395" width="178" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Test Tap Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -149,6 +154,7 @@
                         <outlet property="highScoreLabel" destination="ptX-31-PDf" id="tnu-BM-tMx"/>
                         <outlet property="initialsTextField" destination="bPb-j1-Opm" id="NMv-OO-T8R"/>
                         <outlet property="scoreLabel" destination="P03-6y-L84" id="HkP-MY-f5P"/>
+                        <outlet property="testTapButton" destination="nGs-TG-Vao" id="5tO-Vt-IQj"/>
                         <outlet property="trailingAvatarConstraint" destination="FWK-WW-f2S" id="iJo-GS-3jX"/>
                         <outlet property="widthAvatarConstraint" destination="V2W-f2-SIT" id="ATJ-mu-jQu"/>
                     </connections>
