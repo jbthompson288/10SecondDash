@@ -61,7 +61,6 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate {
             dashLabel.text = "DASH!"
             avatarView.removeConstraints([bottomAvatarConstraint, trailingAvatarConstraint])
             countdownStartCountdown()
-//            animate()
             addTapGestureRecognizer()
             
         }
@@ -121,25 +120,6 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate {
         })
         
     }
-    
-//    func animate() {
-//        
-//        
-//        
-//        //Look into UIKit animation
-//
-//        let aroundScreen = CAKeyframeAnimation()
-//        
-//        aroundScreen.keyPath = "position"
-//        aroundScreen.path = CGPath(rect: CGRect(x: self.avatarSize / 2, y: self.avatarSize / 2, width: self.view.frame.width - self.avatarSize, height: self.view.frame.height - self.avatarSize), transform: nil)
-//        aroundScreen.duration = 4
-//        aroundScreen.repeatCount = Float.infinity
-//        aroundScreen.calculationMode = kCAAnimationPaced
-//        aroundScreen.rotationMode = kCAAnimationRotateAuto
-//        
-//        
-//        self.avatarView.layer.add(aroundScreen, forKey: "around")
-//    }
     
     // MARK: - Timer Countdown Methods
     
