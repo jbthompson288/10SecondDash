@@ -47,40 +47,75 @@ class AvatarViewController: UIViewController {
             avatarView.removeConstraints([bottomAvatarConstraint, trailingAvatarConstraint])
             countdownStartCountdown()
 //            animate()
-            moveToBottomLeft()
+            moveToBottomLeftAnimation()
         }
     }
     
     // MARK: - Animations Method
     
-    func moveToBottomLeft() {
-        let startingPosition = avatarView.frame.origin.x
+    func moveToBottomLeftAnimation() {
         let currentFrame = avatarView.frame
+        let startingPosition = avatarView.frame.origin.x
         let endingPosition = (startingPosition - view.frame.width) + currentFrame.width
         UIView.animate(withDuration: 0.5, animations: {
             self.avatarView.frame = CGRect(x: endingPosition, y: currentFrame.origin.y, width: currentFrame.width, height: currentFrame.height)
-            
+        }, completion:  {(value: Bool) in
+          self.moveToTopLeftAnimation()
         })
     }
     
-    func animate() {
-        
-        
-        
-        //Look into UIKit animation
-
-        let aroundScreen = CAKeyframeAnimation()
-        
-        aroundScreen.keyPath = "position"
-        aroundScreen.path = CGPath(rect: CGRect(x: self.avatarSize / 2, y: self.avatarSize / 2, width: self.view.frame.width - self.avatarSize, height: self.view.frame.height - self.avatarSize), transform: nil)
-        aroundScreen.duration = 4
-        aroundScreen.repeatCount = Float.infinity
-        aroundScreen.calculationMode = kCAAnimationPaced
-        aroundScreen.rotationMode = kCAAnimationRotateAuto
-        
-        
-        self.avatarView.layer.add(aroundScreen, forKey: "around")
+    func moveToTopLeftAnimation() {
+        let currentFrame = avatarView.frame
+        let startingPosition = avatarView.frame.origin.y
+        let endingPosition = (startingPosition - view.frame.height) + currentFrame.height
+        UIView.animate(withDuration: 0.5, animations: {
+            self.avatarView.frame = CGRect(x: currentFrame.origin.x, y: endingPosition, width: currentFrame.width, height: currentFrame.height)
+        }, completion: {(value: Bool) in
+            self.moveToTopRightAnimation()
+        })
     }
+    
+    func moveToTopRightAnimation() {
+        let currentFrame = avatarView.frame
+        let startingPosition = avatarView.frame.origin.x
+        let endingPosition = (startingPosition + view.frame.width) - currentFrame.width
+        UIView.animate(withDuration: 0.5, animations: {
+            self.avatarView.frame = CGRect(x: endingPosition, y: currentFrame.origin.y, width: currentFrame.width, height: currentFrame.height)
+        }, completion: {(value: Bool) in
+            self.moveToBottomRightAnimation()
+        })
+    }
+    
+    func moveToBottomRightAnimation() {
+        let currentFrame = avatarView.frame
+        let startingPosition = avatarView.frame.origin.y
+        let endingPosition = (startingPosition + view.frame.height) - currentFrame.height
+        UIView.animate(withDuration: 0.5, animations: {
+            self.avatarView.frame = CGRect(x: currentFrame.origin.x, y: endingPosition, width: currentFrame.width, height: currentFrame.height)
+        }, completion: {(value: Bool) in
+            self.moveToBottomLeftAnimation()
+        })
+        
+    }
+    
+//    func animate() {
+//        
+//        
+//        
+//        //Look into UIKit animation
+//
+//        let aroundScreen = CAKeyframeAnimation()
+//        
+//        aroundScreen.keyPath = "position"
+//        aroundScreen.path = CGPath(rect: CGRect(x: self.avatarSize / 2, y: self.avatarSize / 2, width: self.view.frame.width - self.avatarSize, height: self.view.frame.height - self.avatarSize), transform: nil)
+//        aroundScreen.duration = 4
+//        aroundScreen.repeatCount = Float.infinity
+//        aroundScreen.calculationMode = kCAAnimationPaced
+//        aroundScreen.rotationMode = kCAAnimationRotateAuto
+//        
+//        
+//        self.avatarView.layer.add(aroundScreen, forKey: "around")
+//    }
     
     // MARK: - Timer Countdown Methods
     
