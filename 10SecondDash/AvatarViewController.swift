@@ -8,9 +8,8 @@
 
 import UIKit
 
-class AvatarViewController: UIViewController {
+class AvatarViewController: UIViewController, UIGestureRecognizerDelegate {
     
-    @IBOutlet weak var testTapButton: UIButton!
     @IBOutlet weak var avatarView: UIView!
     @IBOutlet weak var dashLabel: UILabel!
     @IBOutlet weak var countdownLabel: UILabel!
@@ -31,6 +30,19 @@ class AvatarViewController: UIViewController {
     var scoreLabelText: Double = 0.00
     let pointsAdded: Double = 0.25
     
+    func addTapGestureRecognizer() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        tap.delegate = self
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(tap)
+        
+    }
+    
+    func handleTap() {
+        moveToBottomLeftAnimation()
+    }
+    
+    
     // MARK: - Dash Countdown Methods
     
     var dashTimer = Timer()
@@ -50,7 +62,8 @@ class AvatarViewController: UIViewController {
             avatarView.removeConstraints([bottomAvatarConstraint, trailingAvatarConstraint])
             countdownStartCountdown()
 //            animate()
-            moveToBottomLeftAnimation()
+            addTapGestureRecognizer()
+            
         }
     }
     
@@ -164,7 +177,9 @@ class AvatarViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.highScoreLabel.isHidden = true
+        self.enterInitialsLabel.isHidden = true
+        self.initialsTextField.isHidden = true
     }
     
     
