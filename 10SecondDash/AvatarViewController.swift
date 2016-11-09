@@ -41,29 +41,88 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func handleTap() {
+        let travelDistance:CGFloat = 100
         let currentFrame = avatarView.frame
         let startingXPosition = avatarView.frame.origin.x
         let startingYPosition = avatarView.frame.origin.y
-        let leftEndingXPosition = view.frame.origin.x
+        let bottomLeftEndingXPosition = view.frame.origin.x
+        let topLeftEndingYPosition = view.frame.origin.y
+        let topRightEndingXPosition = view.frame.width - self.avatarSize
+        let bottomRightEndingYPosition = view.frame.height - self.avatarSize
         
-        if startingXPosition <= 20 && avatarView.frame.origin.y == view.frame.height - avatarView.frame.height {
+        //Movement from bottom right to bottom left
+        
+        if startingXPosition <= travelDistance && avatarView.frame.origin.y == view.frame.height - avatarView.frame.height {
             UIView.animate(withDuration: 0.1, animations: {
-                self.avatarView.frame = CGRect(x: leftEndingXPosition, y: startingYPosition, width: self.avatarSize, height: self.avatarSize)
+                self.avatarView.frame = CGRect(x: bottomLeftEndingXPosition, y: startingYPosition, width: self.avatarSize, height: self.avatarSize)
             })
-        } else if startingXPosition > leftEndingXPosition && avatarView.frame.origin.y == view.frame.height - avatarView.frame.height {
+        } else if startingXPosition > bottomLeftEndingXPosition && avatarView.frame.origin.y == view.frame.height - avatarView.frame.height {
             UIView.animate(withDuration: 0.1, animations: {
-                self.avatarView.frame = CGRect(x: currentFrame.origin.x - 20, y: startingYPosition, width: self.avatarSize, height: self.avatarSize)
+                self.avatarView.frame = CGRect(x: currentFrame.origin.x - travelDistance, y: startingYPosition, width: self.avatarSize, height: self.avatarSize)
             })
         }
-        // BL->TL: if y center is <= avatarSize / 2 and x is == view.frame.width - avatar width
-            //move 20 points up
-        // TL->TR: if x center is >= view.frame.width - avatarSize / 2 and y is == 0
-            //mov
+        
+        //Scoring for bottom left corner  (NEED TO HAVE PICTURE ROTATE AS WELL????)
+        
+        if startingYPosition > topLeftEndingYPosition && avatarView.frame.origin.x == bottomLeftEndingXPosition && startingXPosition <= travelDistance && avatarView.frame.origin.y == view.frame.height - avatarView.frame.height {
+            self.scoreLabelText += self.pointsAdded
+            self.scoreLabel.text = String(self.scoreLabelText)
+        }
+        
+        //Movement from bottom left to top left
+        
+        if startingYPosition <= travelDistance && avatarView.frame.origin.x == bottomLeftEndingXPosition {
+            UIView.animate(withDuration: 0.1, animations: {
+                self.avatarView.frame = CGRect(x: bottomLeftEndingXPosition, y: topLeftEndingYPosition, width: self.avatarSize, height: self.avatarSize)
+            })
+        } else if startingYPosition > topLeftEndingYPosition && avatarView.frame.origin.x == bottomLeftEndingXPosition {
+            UIView.animate(withDuration: 0.1, animations: {
+                self.avatarView.frame = CGRect(x: bottomLeftEndingXPosition, y: currentFrame.origin.y - travelDistance, width: self.avatarSize, height: self.avatarSize)
+           })
+        }
+        
+        //Scoring for top left corner  (NEED TO HAVE PICTURE ROTATE AS WELL????)
+        
+        if startingXPosition < topRightEndingXPosition && avatarView.frame.origin.y == topLeftEndingYPosition && startingYPosition <= travelDistance && avatarView.frame.origin.x == bottomLeftEndingXPosition {
+            self.scoreLabelText += self.pointsAdded
+            self.scoreLabel.text = String(self.scoreLabelText)
+        }
         
         
+        //Movement from top left to top right
+        
+        if startingXPosition >= topRightEndingXPosition - travelDistance && avatarView.frame.origin.y == bottomLeftEndingXPosition {
+            UIView.animate(withDuration: 0.1, animations: {
+                self.avatarView.frame = CGRect(x: topRightEndingXPosition, y: topLeftEndingYPosition, width: self.avatarSize, height: self.avatarSize)
+            })
+        } else if startingXPosition < topRightEndingXPosition && avatarView.frame.origin.y == topLeftEndingYPosition {
+            UIView.animate(withDuration: 0.1, animations: {
+                self.avatarView.frame = CGRect(x: currentFrame.origin.x + travelDistance, y: topLeftEndingYPosition, width: self.avatarSize, height: self.avatarSize)
+            })
+        }
+        
+        //Scoring for top right corner  (NEED TO HAVE PICTURE ROTATE AS WELL????)
+        
+        if startingYPosition < bottomRightEndingYPosition && avatarView.frame.origin.x == topRightEndingXPosition && startingXPosition >= topRightEndingXPosition - travelDistance && avatarView.frame.origin.y == bottomLeftEndingXPosition {
+            self.scoreLabelText += self.pointsAdded
+            self.scoreLabel.text = String(self.scoreLabelText)
+        }
         
         
+        //Movement from top right to bottom right
         
+        if startingYPosition >= bottomRightEndingYPosition - travelDistance && avatarView.frame.origin.x == topRightEndingXPosition {
+            UIView.animate(withDuration: 0.1, animations: {
+                self.avatarView.frame = CGRect(x: topRightEndingXPosition, y: bottomRightEndingYPosition, width: self.avatarSize, height: self.avatarSize)
+            }, completion: {(value: Bool) in
+                self.scoreLabelText += self.pointsAdded
+                self.scoreLabel.text = String(self.scoreLabelText)
+            })
+        } else if startingYPosition < bottomRightEndingYPosition && avatarView.frame.origin.x == topRightEndingXPosition {
+            UIView.animate(withDuration: 0.1, animations: {
+                self.avatarView.frame = CGRect(x: topRightEndingXPosition, y: currentFrame.origin.y + travelDistance, width: self.avatarSize, height: self.avatarSize)
+            })
+        }
         
         
         
