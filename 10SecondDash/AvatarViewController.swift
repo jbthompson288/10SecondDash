@@ -30,15 +30,22 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate {
     var scoreLabelText: Double = 0.00
     let pointsAdded: Double = 0.25
     
+    var tap: UITapGestureRecognizer?
     
     // MARK: - Tap Gesture Methods
     
     func addTapGestureRecognizer() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        tap.delegate = self
+        self.tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        self.tap?.delegate = self
         view.isUserInteractionEnabled = true
-        view.addGestureRecognizer(tap)
+        view.addGestureRecognizer(self.tap!)
     }
+    
+    func removeTapGestureRecognizer() {
+        self.view.removeGestureRecognizer(tap!)
+    }
+    
+    
     
     func handleTap() {
         let travelDistance:CGFloat = 100
@@ -169,6 +176,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate {
         } else {
             countdownTimer.invalidate()
             countdownLabel.text = "DONE!"
+            self.removeTapGestureRecognizer()
             
         }
     }
