@@ -44,15 +44,16 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate {
         let currentFrame = avatarView.frame
         let startingXPosition = avatarView.frame.origin.x
         let startingYPosition = avatarView.frame.origin.y
-        let leftEndingXPosition = (startingXPosition - view.frame.width) + currentFrame.width
+        let leftEndingXPosition = view.frame.origin.x
         
-        if avatarView.center.x >= avatarSize / 2 && avatarView.frame.origin.y == view.frame.height - avatarView.frame.height {
-            UIView.animate(withDuration: 0.5, animations: {
+        if startingXPosition <= 20 && avatarView.frame.origin.y == view.frame.height - avatarView.frame.height {
+            UIView.animate(withDuration: 0.1, animations: {
+                self.avatarView.frame = CGRect(x: leftEndingXPosition, y: startingYPosition, width: self.avatarSize, height: self.avatarSize)
+            })
+        } else if startingXPosition > leftEndingXPosition && avatarView.frame.origin.y == view.frame.height - avatarView.frame.height {
+            UIView.animate(withDuration: 0.1, animations: {
                 self.avatarView.frame = CGRect(x: currentFrame.origin.x - 20, y: startingYPosition, width: self.avatarSize, height: self.avatarSize)
             })
-            
-            
-            
         }
         // BL->TL: if y center is <= avatarSize / 2 and x is == view.frame.width - avatar width
             //move 20 points up
