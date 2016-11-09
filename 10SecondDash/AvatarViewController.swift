@@ -30,16 +30,43 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate {
     var scoreLabelText: Double = 0.00
     let pointsAdded: Double = 0.25
     
+    
+    // MARK: - Tap Gesture Methods
+    
     func addTapGestureRecognizer() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         tap.delegate = self
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(tap)
-        
     }
     
     func handleTap() {
-        moveToBottomLeftAnimation()
+        let currentFrame = avatarView.frame
+        let startingXPosition = avatarView.frame.origin.x
+        let startingYPosition = avatarView.frame.origin.y
+        let leftEndingXPosition = (startingXPosition - view.frame.width) + currentFrame.width
+        
+        if avatarView.center.x >= avatarSize / 2 && avatarView.frame.origin.y == view.frame.height - avatarView.frame.height {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.avatarView.frame = CGRect(x: currentFrame.origin.x - 20, y: startingYPosition, width: self.avatarSize, height: self.avatarSize)
+            })
+            
+            
+            
+        }
+        // BL->TL: if y center is <= avatarSize / 2 and x is == view.frame.width - avatar width
+            //move 20 points up
+        // TL->TR: if x center is >= view.frame.width - avatarSize / 2 and y is == 0
+            //mov
+        
+        
+        
+        
+        
+        
+        
+        
+//        moveToBottomLeftAnimation()
     }
     
     
@@ -66,7 +93,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    // MARK: - Animations Method
+    // MARK: - Animations Methods
     
     func moveToBottomLeftAnimation() {
         let currentFrame = avatarView.frame
@@ -137,23 +164,20 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate {
         } else {
             countdownTimer.invalidate()
             countdownLabel.text = "DONE!"
+            
         }
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-            
         dashStartCountdown()
     }
-
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
