@@ -117,16 +117,14 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate {
             }, completion: {(value: Bool) in
                 self.scoreLabelText += self.pointsAdded
                 self.scoreLabel.text = String(self.scoreLabelText)
+                //ADD IMAGE ROTATION CODE HERE???
+                
             })
         } else if startingYPosition < bottomRightEndingYPosition && avatarView.frame.origin.x == topRightEndingXPosition {
             UIView.animate(withDuration: 0.1, animations: {
                 self.avatarView.frame = CGRect(x: topRightEndingXPosition, y: currentFrame.origin.y + travelDistance, width: self.avatarSize, height: self.avatarSize)
             })
         }
-        
-        
-        
-//        moveToBottomLeftAnimation()
     }
     
     
@@ -153,60 +151,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    // MARK: - Animations Methods
-    
-    func moveToBottomLeftAnimation() {
-        let currentFrame = avatarView.frame
-        let startingPosition = avatarView.frame.origin.x
-        let endingPosition = (startingPosition - view.frame.width) + currentFrame.width
-        UIView.animate(withDuration: 0.5, animations: {
-            self.avatarView.frame = CGRect(x: endingPosition, y: currentFrame.origin.y, width: currentFrame.width, height: currentFrame.height)
-        }, completion:  {(value: Bool) in
-            self.scoreLabelText += self.pointsAdded
-            self.scoreLabel.text = String(self.scoreLabelText)
-            self.moveToTopLeftAnimation()
-        })
-    }
-    
-    func moveToTopLeftAnimation() {
-        let currentFrame = avatarView.frame
-        let startingPosition = avatarView.frame.origin.y
-        let endingPosition = (startingPosition - view.frame.height) + currentFrame.height
-        UIView.animate(withDuration: 0.5, animations: {
-            self.avatarView.frame = CGRect(x: currentFrame.origin.x, y: endingPosition, width: currentFrame.width, height: currentFrame.height)
-        }, completion: {(value: Bool) in
-            self.scoreLabelText += self.pointsAdded
-            self.scoreLabel.text = String(self.scoreLabelText)
-            self.moveToTopRightAnimation()
-        })
-    }
-    
-    func moveToTopRightAnimation() {
-        let currentFrame = avatarView.frame
-        let startingPosition = avatarView.frame.origin.x
-        let endingPosition = (startingPosition + view.frame.width) - currentFrame.width
-        UIView.animate(withDuration: 0.5, animations: {
-            self.avatarView.frame = CGRect(x: endingPosition, y: currentFrame.origin.y, width: currentFrame.width, height: currentFrame.height)
-        }, completion: {(value: Bool) in
-            self.scoreLabelText += self.pointsAdded
-            self.scoreLabel.text = String(self.scoreLabelText)
-            self.moveToBottomRightAnimation()
-        })
-    }
-    
-    func moveToBottomRightAnimation() {
-        let currentFrame = avatarView.frame
-        let startingPosition = avatarView.frame.origin.y
-        let endingPosition = (startingPosition + view.frame.height) - currentFrame.height
-        UIView.animate(withDuration: 0.5, animations: {
-            self.avatarView.frame = CGRect(x: currentFrame.origin.x, y: endingPosition, width: currentFrame.width, height: currentFrame.height)
-        }, completion: {(value: Bool) in
-            self.scoreLabelText += self.pointsAdded
-            self.scoreLabel.text = String(self.scoreLabelText)
-            self.moveToBottomLeftAnimation()
-        })
-        
-    }
+
     
     // MARK: - Timer Countdown Methods
     
