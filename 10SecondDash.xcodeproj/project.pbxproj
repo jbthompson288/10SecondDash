@@ -138,6 +138,7 @@
 				TargetAttributes = {
 					E243D7BE1DA7159400723F18 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 96CM66NW8E;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -308,6 +309,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 96CM66NW8E;
 				INFOPLIST_FILE = 10SecondDash/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jbthompson.-0SecondDash";
@@ -320,6 +322,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 96CM66NW8E;
 				INFOPLIST_FILE = 10SecondDash/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jbthompson.-0SecondDash";
