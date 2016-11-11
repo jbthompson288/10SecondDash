@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AvatarViewController: UIViewController, UIGestureRecognizerDelegate {
+class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var avatarView: UIView!
     @IBOutlet weak var dashLabel: UILabel!
@@ -32,6 +32,18 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var tap: UITapGestureRecognizer?
     
+    // MARK: - Text Field Limit Method
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        guard let stringRange = range.range(for: currentText) else { return false }
+        
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        
+        return updatedText.characters.count <= 3
+    }
+    
+    
     // MARK: - Tap Gesture Methods
     
     func addTapGestureRecognizer() {
@@ -44,8 +56,6 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate {
     func removeTapGestureRecognizer() {
         self.view.removeGestureRecognizer(tap!)
     }
-    
-    
     
     func handleTap() {
         let travelDistance:CGFloat = 100
@@ -177,14 +187,24 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate {
             countdownTimer.invalidate()
             countdownLabel.text = "DONE!"
             self.removeTapGestureRecognizer()
-            
+            self.highScoreResult()
         }
+    }
+    
+    func highScoreResult() {
+       //if it is a high score, then do this...
+        self.highScoreLabel.isHidden = false
+        self.enterInitialsLabel.isHidden = false
+        self.initialsTextField.isHidden = false
+        
+        
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        initialsTextField.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
