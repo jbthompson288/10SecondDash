@@ -9,6 +9,16 @@
 import UIKit
 
 class HighScoresViewController: UIViewController {
+    
+    
+    @IBOutlet weak var highScoresLabel: UILabel!
+    
+    //vertical stack view with 3 horizontal stack view inside
+    //create controller for scores and saving scores data
+    
+    
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -47,10 +47,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E237954A1DD76936006F52A2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E2351B501DD55C5C00DA4292 /* NSRange.swift */,
+			);
+			name = Extensions;
+			path = 10SecondDash;
+			sourceTree = "<group>";
+		};
 		E243D7B61DA7159400723F18 = {
 			isa = PBXGroup;
 			children = (
 				E243D7C11DA7159400723F18 /* 10SecondDash */,
+				E237954A1DD76936006F52A2 /* Extensions */,
 				E243D7C01DA7159400723F18 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -78,7 +88,6 @@
 			children = (
 				E2E6DCAD1DC02BA200B62C2C /* Avatar.swift */,
 				E2E6DCB21DC02C2200B62C2C /* Game.swift */,
-				E2351B501DD55C5C00DA4292 /* NSRange.swift */,
 			);
 			name = "Model Objects";
 			sourceTree = "<group>";
