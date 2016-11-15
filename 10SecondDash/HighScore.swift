@@ -10,6 +10,9 @@ import Foundation
 
 struct HighScore {
     
+    private let kName = "name"
+    private let kScore = "score"
+
     let name: String
     let score: Int
     
@@ -17,13 +20,6 @@ struct HighScore {
         self.name = name
         self.score = score
     }
-    
-    /// allow to save into UserDefaults
-    var dictionaryCopy: [String: Any] {
-        return [kName: name, kScore: score]
-    }
-    
-    
     
     /// allow us to take a dictornary that was stored in UserDefaults and turn that dictionary into a HighScore object
     init?(dictionary: [String: Any]) {
@@ -34,7 +30,8 @@ struct HighScore {
         self.score = score
     }
     
-    private let kName = "name"
-    private let kScore = "score"
-    
+    /// allow to save into UserDefaults
+    var dictionaryCopy: [String: Any] {
+        return [kName: name, kScore: score]
+    }
 }

@@ -25,12 +25,6 @@ class HighScoresViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        HighScoresController.shared.create(with: "NTF", score: 12)
-        
-        print(HighScoresController.shared.highScores)
-        
-        
-        
     }
 
     override func didReceiveMemoryWarning() {

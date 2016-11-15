@@ -10,13 +10,14 @@ import Foundation
 
 class HighScoresController {
     
+    private let kHighScores = "highScores"
+    
     static let shared = HighScoresController()
     
     init() {
         self.highScores = load()
     }
     
-    private let kHighScores = "highScores"
     
     var highScores = [HighScore]() {
         didSet {
@@ -28,10 +29,7 @@ class HighScoresController {
     func create(with name: String, score: Int) {
         let highScore = HighScore(name: name, score: score)
         if highScores.count >= 3 {
-            
-            
         }
-        
         highScores.append(highScore)
     }
     
@@ -50,7 +48,6 @@ class HighScoresController {
     }
     
     func save() {
-        
         let highScoreDictionaries = highScores.map { $0.dictionaryCopy }
         UserDefaults.standard.set(highScoreDictionaries, forKey: kHighScores)
     }
@@ -62,7 +59,4 @@ class HighScoresController {
         
         return highScores
     }
-    
-    
-    
 }
