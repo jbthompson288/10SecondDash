@@ -14,6 +14,8 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
     @IBOutlet weak var dashLabel: UILabel!
     @IBOutlet weak var countdownLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var highScoreAndTryAgainLabel: UILabel!
+    @IBOutlet weak var bestDashRunLabel: UILabel!
     @IBOutlet weak var highScoreLabel: UILabel!
     
     @IBOutlet weak var bottomAvatarConstraint: NSLayoutConstraint!
@@ -29,19 +31,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
     let pointsAdded: Double = 0.25
     
     var tap: UITapGestureRecognizer?
-    
-    // MARK: - Text Field Limit Method
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let currentText = textField.text ?? ""
-        guard let stringRange = range.range(for: currentText) else { return false }
-        
-        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-        
-        return updatedText.characters.count <= 3
-    }
-    
-    
+      
     // MARK: - Tap Gesture Methods
     
     func addTapGestureRecognizer() {
@@ -191,6 +181,8 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
     
     func highScoreResult() {
        //if it is a high score, then do this...
+        self.highScoreAndTryAgainLabel.isHidden = false
+        self.bestDashRunLabel.isHidden = false
         self.highScoreLabel.isHidden = false
     }
 
@@ -214,6 +206,8 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.highScoreAndTryAgainLabel.isHidden = true
+        self.bestDashRunLabel.isHidden = true
         self.highScoreLabel.isHidden = true
     }
     
@@ -222,10 +216,9 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
 
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        _ = segue.destination as? HighScoresViewController
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }

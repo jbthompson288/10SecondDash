@@ -20,3 +20,18 @@ extension NSRange {
         return fromIndex ..< toIndex
     }
 }
+
+
+//NO LONGER NEEDED - TOOK OUT OF AVATARVIEWCONTROLLER
+// MARK: - Text Field Limit Method (NO LONGER NEEDED)
+
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        let currentText = textField.text ?? ""
+//        guard let stringRange = range.range(for: currentText) else { return false }
+//
+//        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+//
+//        return updatedText.characters.count <= 3
+//    }
+
+  
