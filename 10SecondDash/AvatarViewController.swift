@@ -180,10 +180,15 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
     }
     
     func highScoreResult() {
+        let highScore = HighScoresController.shared.create(with: self.scoreLabelText)
+       
        //if it is a high score, then do this...
         self.highScoreAndTryAgainLabel.isHidden = false
         self.bestDashRunLabel.isHidden = false
         self.highScoreLabel.isHidden = false
+        
+        
+        self.highScoreLabel.text = String(describing: HighScoresController.shared.load())
     }
 
     
@@ -225,32 +230,3 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
     
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
