@@ -15,8 +15,6 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
     @IBOutlet weak var countdownLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var highScoreLabel: UILabel!
-    @IBOutlet weak var enterInitialsLabel: UILabel!
-    @IBOutlet weak var initialsTextField: UITextField!
     
     @IBOutlet weak var bottomAvatarConstraint: NSLayoutConstraint!
     @IBOutlet weak var heightAvatarConstraint: NSLayoutConstraint!
@@ -194,10 +192,6 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
     func highScoreResult() {
        //if it is a high score, then do this...
         self.highScoreLabel.isHidden = false
-        self.enterInitialsLabel.isHidden = false
-        self.initialsTextField.isHidden = false
-        self.initialsTextField.returnKeyType = UIReturnKeyType.done
-        
     }
 
     
@@ -205,8 +199,6 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        initialsTextField.delegate = self
-        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -223,8 +215,6 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.highScoreLabel.isHidden = true
-        self.enterInitialsLabel.isHidden = true
-        self.initialsTextField.isHidden = true
     }
     
     

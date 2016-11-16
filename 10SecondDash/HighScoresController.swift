@@ -26,7 +26,7 @@ class HighScoresController {
         }
     }
     
-    func create(with name: String, score: Int) {
+    func create(with name: String, score: Double) {
         let highScore = HighScore(name: name, score: score)
         if highScores.count >= 3 {
         }
@@ -49,7 +49,7 @@ class HighScoresController {
     
     func save() {
         let highScoreDictionaries = highScores.map { $0.dictionaryCopy }
-        UserDefaults.standard.set(highScoreDictionaries, forKey: kHighScores)
+        //UserDefaults.standard.set(highScoreDictionaries, forKey: kHighScores)
     }
     
     func load() -> [HighScore] {

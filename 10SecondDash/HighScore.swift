@@ -14,9 +14,9 @@ struct HighScore {
     private let kScore = "score"
 
     let name: String
-    let score: Int
+    let score: Double
     
-    init(name: String, score: Int) {
+    init(name: String, score: Double) {
         self.name = name
         self.score = score
     }
@@ -24,7 +24,7 @@ struct HighScore {
     /// allow us to take a dictornary that was stored in UserDefaults and turn that dictionary into a HighScore object
     init?(dictionary: [String: Any]) {
         guard let name = dictionary[kName] as? String,
-            let score = dictionary[kScore] as? Int else { return nil }
+            let score = dictionary[kScore] as? Double else { return nil }
         
         self.name = name
         self.score = score

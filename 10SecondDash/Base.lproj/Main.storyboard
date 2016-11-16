@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -30,9 +29,6 @@
                                 <rect key="frame" x="16" y="496" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="High Scores Button"/>
-                                <connections>
-                                    <segue destination="r25-13-D9E" kind="presentation" id="9vq-gG-pY8"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YqN-LN-3j7" userLabel="Remove Ads Button">
                                 <rect key="frame" x="16" y="526" width="343" height="30"/>
@@ -140,87 +136,16 @@
                         <outlet property="bottomAvatarConstraint" destination="fVd-Bg-mrE" id="zjh-xt-RUd"/>
                         <outlet property="countdownLabel" destination="zqO-Ms-DnG" id="Ug1-Zl-VOd"/>
                         <outlet property="dashLabel" destination="JSW-4B-zaO" id="vqO-7t-gr8"/>
-                        <outlet property="enterInitialsLabel" destination="ua4-Zq-vF8" id="EfJ-Bj-RpG"/>
                         <outlet property="heightAvatarConstraint" destination="Mzd-la-SwM" id="0Wx-7V-5NC"/>
                         <outlet property="highScoreLabel" destination="ptX-31-PDf" id="tnu-BM-tMx"/>
-                        <outlet property="initialsTextField" destination="bPb-j1-Opm" id="NMv-OO-T8R"/>
                         <outlet property="scoreLabel" destination="P03-6y-L84" id="HkP-MY-f5P"/>
                         <outlet property="trailingAvatarConstraint" destination="FWK-WW-f2S" id="iJo-GS-3jX"/>
                         <outlet property="widthAvatarConstraint" destination="V2W-f2-SIT" id="ATJ-mu-jQu"/>
-                        <segue destination="r25-13-D9E" kind="show" identifier="toHighScoresViewController" id="KEL-nY-aFM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r15-Wr-APC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="901.60000000000002" y="-536.58170914542734"/>
-        </scene>
-        <!--High Scores View Controller-->
-        <scene sceneID="yZo-RR-tkY">
-            <objects>
-                <viewController title="High Scores View Controller" id="r25-13-D9E" customClass="HighScoresViewController" customModule="_0SecondDash" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="cku-xr-eGZ"/>
-                        <viewControllerLayoutGuide type="bottom" id="WhL-Y2-4so"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="3uA-xj-152">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oyb-uD-ThZ">
-                                <rect key="frame" x="16" y="502.5" width="343" height="94.5"/>
-                                <state key="normal" title="Main Menu Button"/>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="KaG-mB-4c9"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="High Scores Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1JB-vW-F83">
-                                <rect key="frame" x="67" y="49" width="240" height="85"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PVk-vh-EmR">
-                                <rect key="frame" x="67" y="142" width="241" height="330"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IRD-Hg-MVg">
-                                        <rect key="frame" x="0.0" y="0.0" width="241" height="110"/>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XFQ-BO-5bU">
-                                        <rect key="frame" x="0.0" y="110" width="241" height="110"/>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fi4-zK-oGc">
-                                        <rect key="frame" x="0.0" y="220" width="241" height="110"/>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Oyb-uD-ThZ" firstAttribute="top" secondItem="PVk-vh-EmR" secondAttribute="bottom" constant="95" id="2tX-vS-fKU"/>
-                            <constraint firstItem="1JB-vW-F83" firstAttribute="top" secondItem="cku-xr-eGZ" secondAttribute="bottom" constant="29" id="5b8-Vk-Dv3"/>
-                            <constraint firstItem="PVk-vh-EmR" firstAttribute="leading" secondItem="3uA-xj-152" secondAttribute="leading" constant="67" id="Htd-Jy-NVP"/>
-                            <constraint firstItem="1JB-vW-F83" firstAttribute="leading" secondItem="3uA-xj-152" secondAttribute="leading" constant="51" id="I0J-DG-uFy"/>
-                            <constraint firstItem="Oyb-uD-ThZ" firstAttribute="leading" secondItem="3uA-xj-152" secondAttribute="leadingMargin" id="Ihc-IS-UWt"/>
-                            <constraint firstAttribute="trailing" secondItem="PVk-vh-EmR" secondAttribute="trailing" constant="67" id="KHe-ex-6yk"/>
-                            <constraint firstItem="Oyb-uD-ThZ" firstAttribute="trailing" secondItem="3uA-xj-152" secondAttribute="trailingMargin" id="NUG-S7-Qyg"/>
-                            <constraint firstItem="Oyb-uD-ThZ" firstAttribute="top" secondItem="PVk-vh-EmR" secondAttribute="bottom" constant="95" id="UWL-I9-YS4"/>
-                            <constraint firstItem="WhL-Y2-4so" firstAttribute="top" secondItem="Oyb-uD-ThZ" secondAttribute="bottom" constant="70" id="XiN-lr-GQe"/>
-                            <constraint firstAttribute="trailing" secondItem="1JB-vW-F83" secondAttribute="trailing" constant="52" id="Ytq-FQ-hk5"/>
-                            <constraint firstItem="PVk-vh-EmR" firstAttribute="top" secondItem="1JB-vW-F83" secondAttribute="bottom" constant="8" id="acD-OA-7zM"/>
-                            <constraint firstItem="PVk-vh-EmR" firstAttribute="top" secondItem="1JB-vW-F83" secondAttribute="bottom" constant="8" id="mwE-cW-bGv"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="highScoresLabel" destination="1JB-vW-F83" id="Fcx-1c-RbQ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Dn6-F9-2Ff" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1661.5999999999999" y="122.78860569715144"/>
+            <point key="canvasLocation" x="1180" y="123"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="KaG-mB-4c9"/>
-        <segue reference="9vq-gG-pY8"/>
-    </inferredMetricsTieBreakers>
 </document>
