@@ -12,6 +12,10 @@ struct HighScore {
     
     let score: Double
     
+    init() {
+        self.score = 0.00
+    }
+    
     init(score: Double) {
         self.score = score
     }

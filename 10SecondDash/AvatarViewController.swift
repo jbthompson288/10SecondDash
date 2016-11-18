@@ -31,7 +31,9 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
     let pointsAdded: Double = 0.25
     
     var tap: UITapGestureRecognizer?
-      
+    
+    var highScore = HighScoresController.shared.load()
+    
     // MARK: - Tap Gesture Methods
     
     func addTapGestureRecognizer() {
@@ -83,7 +85,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
         } else if startingYPosition > topLeftEndingYPosition && avatarView.frame.origin.x == bottomLeftEndingXPosition {
             UIView.animate(withDuration: 0.1, animations: {
                 self.avatarView.frame = CGRect(x: bottomLeftEndingXPosition, y: currentFrame.origin.y - travelDistance, width: self.avatarSize, height: self.avatarSize)
-           })
+            })
         }
         
         //Scoring for top left corner  (NEED TO HAVE PICTURE ROTATE AS WELL????)
@@ -122,7 +124,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
             }, completion: {(value: Bool) in
                 self.scoreLabelText += self.pointsAdded
                 self.scoreLabel.text = String(self.scoreLabelText)
-                //ADD IMAGE ROTATION CODE HERE???
+                // TODO: ADD IMAGE ROTATION CODE HERE???
                 
             })
         } else if startingYPosition < bottomRightEndingYPosition && avatarView.frame.origin.x == topRightEndingXPosition {
@@ -156,7 +158,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
         }
     }
     
-
+    
     
     // MARK: - Timer Countdown Methods
     
@@ -180,19 +182,22 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
     }
     
     func highScoreResult() {
-        let highScore = HighScoresController.shared.create(with: self.scoreLabelText)
-       
-       //if it is a high score, then do this...
-        self.highScoreAndTryAgainLabel.isHidden = false
-        self.bestDashRunLabel.isHidden = false
-        self.highScoreLabel.isHidden = false
-        
-        
-        self.highScoreLabel.text = String(describing: HighScoresController.shared.load())
+        if self.scoreLabelText > self.highScore.score {
+            _ = HighScoresController.shared.create(with: self.scoreLabelText)
+            HighScoresController.shared.save()
+            self.highScoreAndTryAgainLabel.isHidden = false
+            self.highScoreAndTryAgainLabel.text = "NEW HIGH SCORE!"
+        } else {
+            self.highScoreAndTryAgainLabel.isHidden = false
+            self.highScoreAndTryAgainLabel.text = "TRY AGAIN"
+            self.bestDashRunLabel.isHidden = false
+            self.highScoreLabel.isHidden = false
+            self.highScoreLabel.text = String(self.highScore.score)
+        }
     }
-
     
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -215,18 +220,4 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
         self.bestDashRunLabel.isHidden = true
         self.highScoreLabel.isHidden = true
     }
-    
-    
-    
-
-    
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    
-
 }
