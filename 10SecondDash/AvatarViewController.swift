@@ -10,6 +10,8 @@ import UIKit
 
 class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITextFieldDelegate {
     
+    // MARK: - IBOutlets
+    
     @IBOutlet weak var avatarView: UIView!
     @IBOutlet weak var dashLabel: UILabel!
     @IBOutlet weak var countdownLabel: UILabel!
@@ -17,25 +19,28 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
     @IBOutlet weak var highScoreAndTryAgainLabel: UILabel!
     @IBOutlet weak var bestDashRunLabel: UILabel!
     @IBOutlet weak var highScoreLabel: UILabel!
-    
     @IBOutlet weak var bottomAvatarConstraint: NSLayoutConstraint!
     @IBOutlet weak var heightAvatarConstraint: NSLayoutConstraint!
     @IBOutlet weak var widthAvatarConstraint: NSLayoutConstraint!
     @IBOutlet weak var trailingAvatarConstraint: NSLayoutConstraint!
     
+    
+    // MARK: - Properties
+    
     let avatarSize: CGFloat = 70.0
-    
     var timeRemaining: TimeInterval?
-    
     var scoreLabelText: Double = 0.00
     let pointsAdded: Double = 0.25
-    
     var tap: UITapGestureRecognizer?
-    
+    var dashTimer = Timer()
+    var dashCount = 4
+    var countdownTimer = Timer()
+    var countdownCount = 10
     var highScore = HighScoresController.shared.load()
     
-    // MARK: - Tap Gesture Methods
+    // MARK: - Tap Gesture Methods (Animation)
     
+    ///Allows the full screen to be tapped to initiate the animation
     func addTapGestureRecognizer() {
         self.tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         self.tap?.delegate = self
@@ -47,6 +52,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
         self.view.removeGestureRecognizer(tap!)
     }
     
+    ///Amination of the avatar to move around the screen clockwise
     func handleTap() {
         let travelDistance:CGFloat = 100
         let currentFrame = avatarView.frame
@@ -69,7 +75,8 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
             })
         }
         
-        //Scoring for bottom left corner  (NEED TO HAVE PICTURE ROTATE AS WELL????)
+        //Scoring for bottom left corner
+        // TODO: write code for picture to rotate
         
         if startingYPosition > topLeftEndingYPosition && avatarView.frame.origin.x == bottomLeftEndingXPosition && startingXPosition <= travelDistance && avatarView.frame.origin.y == view.frame.height - avatarView.frame.height {
             self.scoreLabelText += self.pointsAdded
@@ -95,7 +102,6 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
             self.scoreLabel.text = String(self.scoreLabelText)
         }
         
-        
         //Movement from top left to top right
         
         if startingXPosition >= topRightEndingXPosition - travelDistance && avatarView.frame.origin.y == bottomLeftEndingXPosition {
@@ -108,13 +114,13 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
             })
         }
         
-        //Scoring for top right corner  (NEED TO HAVE PICTURE ROTATE AS WELL????)
+        //Scoring for top right corner
+        // TODO: write code for picture to rotate
         
         if startingYPosition < bottomRightEndingYPosition && avatarView.frame.origin.x == topRightEndingXPosition && startingXPosition >= topRightEndingXPosition - travelDistance && avatarView.frame.origin.y == bottomLeftEndingXPosition {
             self.scoreLabelText += self.pointsAdded
             self.scoreLabel.text = String(self.scoreLabelText)
         }
-        
         
         //Movement from top right to bottom right
         
@@ -124,7 +130,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
             }, completion: {(value: Bool) in
                 self.scoreLabelText += self.pointsAdded
                 self.scoreLabel.text = String(self.scoreLabelText)
-                // TODO: ADD IMAGE ROTATION CODE HERE???
+                // TODO: ADD IMAGE ROTATION CODE HERE
                 
             })
         } else if startingYPosition < bottomRightEndingYPosition && avatarView.frame.origin.x == topRightEndingXPosition {
@@ -134,13 +140,9 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
         }
     }
     
-    
     // MARK: - Dash Countdown Methods
     
-    var dashTimer = Timer()
-    var dashCount = 4
-    
-    func dashStartCountdown(){
+    func dashStartCountdown() {
         dashTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(dashUpdate), userInfo: nil, repeats: true)
     }
     
@@ -154,16 +156,10 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
             avatarView.removeConstraints([bottomAvatarConstraint, trailingAvatarConstraint])
             countdownStartCountdown()
             addTapGestureRecognizer()
-            
         }
     }
     
-    
-    
     // MARK: - Timer Countdown Methods
-    
-    var countdownTimer = Timer()
-    var countdownCount = 10
     
     func countdownStartCountdown(){
         countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countdownUpdate), userInfo: nil, repeats: true)
@@ -181,6 +177,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
         }
     }
     
+    ///Checks if the current high score is greater than previous high score
     func highScoreResult() {
         if self.scoreLabelText > self.highScore.score {
             _ = HighScoresController.shared.create(with: self.scoreLabelText)
@@ -196,18 +193,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
         }
     }
     
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        performSegue(withIdentifier: "toHighScoresViewController", sender: Any?.self)
-        return true
-    }
-    
+    // MARK: - Life Cycle Methods
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
