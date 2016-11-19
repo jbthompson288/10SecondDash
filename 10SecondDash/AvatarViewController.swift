@@ -12,7 +12,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
     
     // MARK: - IBOutlets
     
-    @IBOutlet weak var avatarView: UIView!
+    @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var dashLabel: UILabel!
     @IBOutlet weak var countdownLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!

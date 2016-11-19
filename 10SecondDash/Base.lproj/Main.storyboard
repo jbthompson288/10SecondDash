@@ -97,14 +97,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nTD-Jp-0sI">
-                                <rect key="frame" x="305" y="597" width="70" height="70"/>
-                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="Mzd-la-SwM"/>
-                                    <constraint firstAttribute="width" constant="70" id="V2W-f2-SIT"/>
-                                </constraints>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Best Dash Run" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVL-Ew-iK1" userLabel="Best Dash Run Label">
                                 <rect key="frame" x="78" y="300" width="217" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -119,30 +111,40 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="B5o-Dz-bVl">
+                                <rect key="frame" x="305" y="597" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="Xdp-o8-JS9"/>
+                                    <constraint firstAttribute="height" constant="70" id="xE5-Ht-ukT"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="nTD-Jp-0sI" secondAttribute="trailing" id="FWK-WW-f2S"/>
-                            <constraint firstItem="sdV-CE-IsP" firstAttribute="top" secondItem="nTD-Jp-0sI" secondAttribute="bottom" id="fVd-Bg-mrE"/>
+                            <constraint firstAttribute="trailing" secondItem="B5o-Dz-bVl" secondAttribute="trailing" id="2V5-6W-GzE"/>
+                            <constraint firstItem="sdV-CE-IsP" firstAttribute="top" secondItem="B5o-Dz-bVl" secondAttribute="bottom" id="kQu-fE-Xzn"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="avatarView" destination="nTD-Jp-0sI" id="BCL-aC-3x8"/>
+                        <outlet property="avatarView" destination="B5o-Dz-bVl" id="dv0-3c-TT2"/>
                         <outlet property="bestDashRunLabel" destination="HVL-Ew-iK1" id="ALZ-Un-YHp"/>
-                        <outlet property="bottomAvatarConstraint" destination="fVd-Bg-mrE" id="zjh-xt-RUd"/>
+                        <outlet property="bottomAvatarConstraint" destination="kQu-fE-Xzn" id="xQG-KP-HPm"/>
                         <outlet property="countdownLabel" destination="zqO-Ms-DnG" id="Ug1-Zl-VOd"/>
                         <outlet property="dashLabel" destination="JSW-4B-zaO" id="vqO-7t-gr8"/>
-                        <outlet property="heightAvatarConstraint" destination="Mzd-la-SwM" id="0Wx-7V-5NC"/>
+                        <outlet property="heightAvatarConstraint" destination="xE5-Ht-ukT" id="8u2-Y3-EtV"/>
                         <outlet property="highScoreAndTryAgainLabel" destination="ptX-31-PDf" id="dZI-GI-pfY"/>
                         <outlet property="highScoreLabel" destination="L24-Um-e9g" id="2M1-Fp-VfZ"/>
                         <outlet property="scoreLabel" destination="P03-6y-L84" id="HkP-MY-f5P"/>
-                        <outlet property="trailingAvatarConstraint" destination="FWK-WW-f2S" id="iJo-GS-3jX"/>
-                        <outlet property="widthAvatarConstraint" destination="V2W-f2-SIT" id="ATJ-mu-jQu"/>
+                        <outlet property="trailingAvatarConstraint" destination="2V5-6W-GzE" id="oKC-PE-rcn"/>
+                        <outlet property="widthAvatarConstraint" destination="Xdp-o8-JS9" id="Uq3-g0-amj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r15-Wr-APC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1180" y="122.78860569715144"/>
+            <point key="canvasLocation" x="1178.985507246377" y="122.69021739130436"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Image" width="640" height="480"/>
+    </resources>
 </document>
