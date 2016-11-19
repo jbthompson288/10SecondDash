@@ -54,7 +54,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
     
     ///Amination of the avatar to move around the screen clockwise
     func handleTap() {
-        let travelDistance:CGFloat = 100
+        let travelDistance:CGFloat = 10
         let currentFrame = avatarView.frame
         let startingXPosition = avatarView.frame.origin.x
         let startingYPosition = avatarView.frame.origin.y
@@ -70,6 +70,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
                 self.avatarView.frame = CGRect(x: bottomLeftEndingXPosition, y: startingYPosition, width: self.avatarSize, height: self.avatarSize)
             })
         } else if startingXPosition > bottomLeftEndingXPosition && avatarView.frame.origin.y == view.frame.height - avatarView.frame.height {
+            avatarView.image = #imageLiteral(resourceName: "up")
             UIView.animate(withDuration: 0.1, animations: {
                 self.avatarView.frame = CGRect(x: currentFrame.origin.x - travelDistance, y: startingYPosition, width: self.avatarSize, height: self.avatarSize)
             })
