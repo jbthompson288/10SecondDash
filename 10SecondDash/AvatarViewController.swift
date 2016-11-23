@@ -54,7 +54,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
     
     ///Amination of the avatar to move around the screen clockwise
     func handleTap() {
-        let travelDistance:CGFloat = 10
+        let travelDistance:CGFloat = 70
         let currentFrame = avatarView.frame
         let startingXPosition = avatarView.frame.origin.x
         let startingYPosition = avatarView.frame.origin.y
@@ -66,20 +66,22 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
         //Movement from bottom right to bottom left
         
         if startingXPosition <= travelDistance && avatarView.frame.origin.y == view.frame.height - avatarView.frame.height {
+            imageSelection()
             UIView.animate(withDuration: 0.1, animations: {
                 self.avatarView.frame = CGRect(x: bottomLeftEndingXPosition, y: startingYPosition, width: self.avatarSize, height: self.avatarSize)
             })
         } else if startingXPosition > bottomLeftEndingXPosition && avatarView.frame.origin.y == view.frame.height - avatarView.frame.height {
-            avatarView.image = #imageLiteral(resourceName: "up")
+            imageSelection()
             UIView.animate(withDuration: 0.1, animations: {
                 self.avatarView.frame = CGRect(x: currentFrame.origin.x - travelDistance, y: startingYPosition, width: self.avatarSize, height: self.avatarSize)
             })
         }
         
         //Scoring for bottom left corner
-        // TODO: write code for picture to rotate
         
         if startingYPosition > topLeftEndingYPosition && avatarView.frame.origin.x == bottomLeftEndingXPosition && startingXPosition <= travelDistance && avatarView.frame.origin.y == view.frame.height - avatarView.frame.height {
+            imageSelection()
+            imageRotation()
             self.scoreLabelText += self.pointsAdded
             self.scoreLabel.text = String(self.scoreLabelText)
         }
@@ -87,38 +89,45 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
         //Movement from bottom left to top left
         
         if startingYPosition <= travelDistance && avatarView.frame.origin.x == bottomLeftEndingXPosition {
+            imageSelection()
             UIView.animate(withDuration: 0.1, animations: {
                 self.avatarView.frame = CGRect(x: bottomLeftEndingXPosition, y: topLeftEndingYPosition, width: self.avatarSize, height: self.avatarSize)
             })
         } else if startingYPosition > topLeftEndingYPosition && avatarView.frame.origin.x == bottomLeftEndingXPosition {
+            imageSelection()
             UIView.animate(withDuration: 0.1, animations: {
                 self.avatarView.frame = CGRect(x: bottomLeftEndingXPosition, y: currentFrame.origin.y - travelDistance, width: self.avatarSize, height: self.avatarSize)
             })
         }
         
-        //Scoring for top left corner  (NEED TO HAVE PICTURE ROTATE AS WELL????)
+        //Scoring for top left corner
         
         if startingXPosition < topRightEndingXPosition && avatarView.frame.origin.y == topLeftEndingYPosition && startingYPosition <= travelDistance && avatarView.frame.origin.x == bottomLeftEndingXPosition {
+            imageSelection()
+            imageRotation2()
             self.scoreLabelText += self.pointsAdded
             self.scoreLabel.text = String(self.scoreLabelText)
         }
         
         //Movement from top left to top right
         
-        if startingXPosition >= topRightEndingXPosition - travelDistance && avatarView.frame.origin.y == bottomLeftEndingXPosition {
+        if startingXPosition >= topRightEndingXPosition - travelDistance && Int(avatarView.frame.origin.y) == Int(bottomLeftEndingXPosition) {
+            imageSelection()
             UIView.animate(withDuration: 0.1, animations: {
                 self.avatarView.frame = CGRect(x: topRightEndingXPosition, y: topLeftEndingYPosition, width: self.avatarSize, height: self.avatarSize)
             })
-        } else if startingXPosition < topRightEndingXPosition && avatarView.frame.origin.y == topLeftEndingYPosition {
+        } else if startingXPosition < topRightEndingXPosition && Int(avatarView.frame.origin.y) == Int(topLeftEndingYPosition) {
+            imageSelection()
             UIView.animate(withDuration: 0.1, animations: {
                 self.avatarView.frame = CGRect(x: currentFrame.origin.x + travelDistance, y: topLeftEndingYPosition, width: self.avatarSize, height: self.avatarSize)
             })
         }
         
         //Scoring for top right corner
-        // TODO: write code for picture to rotate
         
-        if startingYPosition < bottomRightEndingYPosition && avatarView.frame.origin.x == topRightEndingXPosition && startingXPosition >= topRightEndingXPosition - travelDistance && avatarView.frame.origin.y == bottomLeftEndingXPosition {
+        if Int(startingYPosition) < Int(bottomRightEndingYPosition) && avatarView.frame.origin.x == topRightEndingXPosition && startingXPosition >= topRightEndingXPosition - travelDistance && Int(avatarView.frame.origin.y) == Int(bottomLeftEndingXPosition) {
+            imageSelection()
+            imageRotation3()
             self.scoreLabelText += self.pointsAdded
             self.scoreLabel.text = String(self.scoreLabelText)
         }
@@ -126,21 +135,82 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
         //Movement from top right to bottom right
         
         if startingYPosition >= bottomRightEndingYPosition - travelDistance && avatarView.frame.origin.x == topRightEndingXPosition {
+            imageSelection()
             UIView.animate(withDuration: 0.1, animations: {
                 self.avatarView.frame = CGRect(x: topRightEndingXPosition, y: bottomRightEndingYPosition, width: self.avatarSize, height: self.avatarSize)
             }, completion: {(value: Bool) in
                 self.scoreLabelText += self.pointsAdded
                 self.scoreLabel.text = String(self.scoreLabelText)
-                // TODO: ADD IMAGE ROTATION CODE HERE
+                self.imageRotation4()
                 
             })
         } else if startingYPosition < bottomRightEndingYPosition && avatarView.frame.origin.x == topRightEndingXPosition {
+            imageSelection()
             UIView.animate(withDuration: 0.1, animations: {
                 self.avatarView.frame = CGRect(x: topRightEndingXPosition, y: currentFrame.origin.y + travelDistance, width: self.avatarSize, height: self.avatarSize)
             })
         }
     }
     
+    // MARK: - Image Selection Method
+    
+    func imageSelection() {
+        if avatarView.image == #imageLiteral(resourceName: "start") {
+            avatarView.image = #imageLiteral(resourceName: "up")
+            return
+        }
+        if avatarView.image == #imageLiteral(resourceName: "up") {
+            avatarView.image = #imageLiteral(resourceName: "up2")
+            return
+        }
+        if avatarView.image == #imageLiteral(resourceName: "up2") {
+            avatarView.image = #imageLiteral(resourceName: "up3")
+            return
+        }
+        if avatarView.image == #imageLiteral(resourceName: "up3") {
+            avatarView.image = #imageLiteral(resourceName: "run1")
+            return
+        }
+        if avatarView.image == #imageLiteral(resourceName: "run1") {
+            avatarView.image = #imageLiteral(resourceName: "run2")
+            return
+        }
+        if avatarView.image == #imageLiteral(resourceName: "run2") {
+            avatarView.image = #imageLiteral(resourceName: "run3")
+            return
+        }
+        if avatarView.image == #imageLiteral(resourceName: "run3") {
+            avatarView.image = #imageLiteral(resourceName: "run4")
+            return
+        }
+        if avatarView.image == #imageLiteral(resourceName: "run4") {
+            avatarView.image = #imageLiteral(resourceName: "run1")
+            return
+        }
+    }
+    
+    // MARK: - Image Rotation Method
+    
+    func imageRotation() {
+        UIView.animate(withDuration: 0.1, animations: {
+            self.avatarView.transform = CGAffineTransform(rotationAngle: (180 * CGFloat(M_PI)) / 360)
+        })
+    }
+    func imageRotation2() {
+        UIView.animate(withDuration: 0.1, animations: {
+            self.avatarView.transform = CGAffineTransform(rotationAngle: (360 * CGFloat(M_PI)) / 360)
+        })
+    }
+    func imageRotation3() {
+        UIView.animate(withDuration: 0.1, animations: {
+            self.avatarView.transform = CGAffineTransform(rotationAngle: (540 * CGFloat(M_PI)) / 360)
+        })
+    }
+    func imageRotation4() {
+        UIView.animate(withDuration: 0.1, animations: {
+            self.avatarView.transform = CGAffineTransform(rotationAngle: (720 * CGFloat(M_PI)) / 360)
+        })
+    }
     // MARK: - Dash Countdown Methods
     
     func dashStartCountdown() {
