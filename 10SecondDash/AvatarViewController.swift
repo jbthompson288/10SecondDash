@@ -81,7 +81,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
         
         if startingYPosition > topLeftEndingYPosition && avatarView.frame.origin.x == bottomLeftEndingXPosition && startingXPosition <= travelDistance && avatarView.frame.origin.y == view.frame.height - avatarView.frame.height {
             imageSelection()
-            imageRotation()
+            bottomLeftImageRotation()
             self.scoreLabelText += self.pointsAdded
             self.scoreLabel.text = String(self.scoreLabelText)
         }
@@ -104,7 +104,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
         
         if startingXPosition < topRightEndingXPosition && avatarView.frame.origin.y == topLeftEndingYPosition && startingYPosition <= travelDistance && avatarView.frame.origin.x == bottomLeftEndingXPosition {
             imageSelection()
-            imageRotation2()
+            topLeftImageRotation()
             self.scoreLabelText += self.pointsAdded
             self.scoreLabel.text = String(self.scoreLabelText)
         }
@@ -127,7 +127,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
         
         if Int(startingYPosition) < Int(bottomRightEndingYPosition) && avatarView.frame.origin.x == topRightEndingXPosition && startingXPosition >= topRightEndingXPosition - travelDistance && Int(avatarView.frame.origin.y) == Int(bottomLeftEndingXPosition) {
             imageSelection()
-            imageRotation3()
+            topRightImageRotation()
             self.scoreLabelText += self.pointsAdded
             self.scoreLabel.text = String(self.scoreLabelText)
         }
@@ -141,7 +141,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
             }, completion: {(value: Bool) in
                 self.scoreLabelText += self.pointsAdded
                 self.scoreLabel.text = String(self.scoreLabelText)
-                self.imageRotation4()
+                self.bottomRightImageRotation()
                 
             })
         } else if startingYPosition < bottomRightEndingYPosition && avatarView.frame.origin.x == topRightEndingXPosition {
@@ -189,24 +189,24 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
         }
     }
     
-    // MARK: - Image Rotation Method
+    // MARK: - Image Rotation Methods
     
-    func imageRotation() {
+    func bottomLeftImageRotation() {
         UIView.animate(withDuration: 0.1, animations: {
             self.avatarView.transform = CGAffineTransform(rotationAngle: (180 * CGFloat(M_PI)) / 360)
         })
     }
-    func imageRotation2() {
+    func topLeftImageRotation() {
         UIView.animate(withDuration: 0.1, animations: {
             self.avatarView.transform = CGAffineTransform(rotationAngle: (360 * CGFloat(M_PI)) / 360)
         })
     }
-    func imageRotation3() {
+    func topRightImageRotation() {
         UIView.animate(withDuration: 0.1, animations: {
             self.avatarView.transform = CGAffineTransform(rotationAngle: (540 * CGFloat(M_PI)) / 360)
         })
     }
-    func imageRotation4() {
+    func bottomRightImageRotation() {
         UIView.animate(withDuration: 0.1, animations: {
             self.avatarView.transform = CGAffineTransform(rotationAngle: (720 * CGFloat(M_PI)) / 360)
         })
