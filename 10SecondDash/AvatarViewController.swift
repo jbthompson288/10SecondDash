@@ -23,6 +23,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
     @IBOutlet weak var heightAvatarConstraint: NSLayoutConstraint!
     @IBOutlet weak var widthAvatarConstraint: NSLayoutConstraint!
     @IBOutlet weak var trailingAvatarConstraint: NSLayoutConstraint!
+    @IBOutlet weak var mainMenuButton: UIButton!
     
     
     // MARK: - Properties
@@ -37,6 +38,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
     var countdownTimer = Timer()
     var countdownCount = 10
     var highScore = HighScoresController.shared.load()
+    var swipe: UISwipeGestureRecognizer?
     
     // MARK: - Tap Gesture Methods (Animation)
     
@@ -65,12 +67,12 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
         
         //Movement from bottom right to bottom left
         
-        if startingXPosition <= travelDistance && avatarView.frame.origin.y == view.frame.height - avatarView.frame.height {
+        if startingXPosition <= travelDistance && startingYPosition == view.frame.height - avatarView.frame.height {
             imageSelection()
             UIView.animate(withDuration: 0.1, animations: {
                 self.avatarView.frame = CGRect(x: bottomLeftEndingXPosition, y: startingYPosition, width: self.avatarSize, height: self.avatarSize)
             })
-        } else if startingXPosition > bottomLeftEndingXPosition && avatarView.frame.origin.y == view.frame.height - avatarView.frame.height {
+        } else if startingXPosition > bottomLeftEndingXPosition && startingYPosition == view.frame.height - avatarView.frame.height {
             imageSelection()
             UIView.animate(withDuration: 0.1, animations: {
                 self.avatarView.frame = CGRect(x: currentFrame.origin.x - travelDistance, y: startingYPosition, width: self.avatarSize, height: self.avatarSize)
@@ -79,7 +81,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
         
         //Scoring for bottom left corner
         
-        if startingYPosition > topLeftEndingYPosition && avatarView.frame.origin.x == bottomLeftEndingXPosition && startingXPosition <= travelDistance && avatarView.frame.origin.y == view.frame.height - avatarView.frame.height {
+        if startingYPosition > topLeftEndingYPosition && startingXPosition == bottomLeftEndingXPosition && startingXPosition <= travelDistance && startingYPosition == view.frame.height - avatarView.frame.height {
             imageSelection()
             bottomLeftImageRotation()
             self.scoreLabelText += self.pointsAdded
@@ -88,12 +90,12 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
         
         //Movement from bottom left to top left
         
-        if startingYPosition <= travelDistance && avatarView.frame.origin.x == bottomLeftEndingXPosition {
+        if startingYPosition <= travelDistance && Int(startingXPosition) == Int(bottomLeftEndingXPosition) {
             imageSelection()
             UIView.animate(withDuration: 0.1, animations: {
                 self.avatarView.frame = CGRect(x: bottomLeftEndingXPosition, y: topLeftEndingYPosition, width: self.avatarSize, height: self.avatarSize)
             })
-        } else if startingYPosition > topLeftEndingYPosition && avatarView.frame.origin.x == bottomLeftEndingXPosition {
+        } else if startingYPosition > topLeftEndingYPosition && currentFrame.origin.x == bottomLeftEndingXPosition {
             imageSelection()
             UIView.animate(withDuration: 0.1, animations: {
                 self.avatarView.frame = CGRect(x: bottomLeftEndingXPosition, y: currentFrame.origin.y - travelDistance, width: self.avatarSize, height: self.avatarSize)
@@ -111,12 +113,12 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
         
         //Movement from top left to top right
         
-        if startingXPosition >= topRightEndingXPosition - travelDistance && Int(avatarView.frame.origin.y) == Int(bottomLeftEndingXPosition) {
+        if startingXPosition >= topRightEndingXPosition - travelDistance && Int(startingYPosition) == Int(bottomLeftEndingXPosition) {
             imageSelection()
             UIView.animate(withDuration: 0.1, animations: {
                 self.avatarView.frame = CGRect(x: topRightEndingXPosition, y: topLeftEndingYPosition, width: self.avatarSize, height: self.avatarSize)
             })
-        } else if startingXPosition < topRightEndingXPosition && Int(avatarView.frame.origin.y) == Int(topLeftEndingYPosition) {
+        } else if startingXPosition < topRightEndingXPosition && Int(startingYPosition) == Int(topLeftEndingYPosition) {
             imageSelection()
             UIView.animate(withDuration: 0.1, animations: {
                 self.avatarView.frame = CGRect(x: currentFrame.origin.x + travelDistance, y: topLeftEndingYPosition, width: self.avatarSize, height: self.avatarSize)
@@ -142,7 +144,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
                 self.scoreLabelText += self.pointsAdded
                 self.scoreLabel.text = String(self.scoreLabelText)
                 self.bottomRightImageRotation()
-                
+                self.addSwipeGestureRecognizer()
             })
         } else if startingYPosition < bottomRightEndingYPosition && avatarView.frame.origin.x == topRightEndingXPosition {
             imageSelection()
@@ -244,7 +246,10 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
             countdownTimer.invalidate()
             countdownLabel.text = "DONE!"
             self.removeTapGestureRecognizer()
+            self.removeSwipeGestureRecognizer()
             self.highScoreResult()
+            self.mainMenuButton.isHidden = false
+            self.dashLabel.isHidden = true
         }
     }
     
@@ -276,5 +281,6 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
         self.highScoreAndTryAgainLabel.isHidden = true
         self.bestDashRunLabel.isHidden = true
         self.highScoreLabel.isHidden = true
+        self.mainMenuButton.isHidden = true
     }
 }
