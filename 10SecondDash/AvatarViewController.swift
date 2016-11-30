@@ -39,6 +39,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
     var countdownCount = 10
     var highScore = HighScoresController.shared.load()
     var swipe: UISwipeGestureRecognizer?
+    var avatarTap: UITapGestureRecognizer?
     
     // MARK: - Tap Gesture Methods (Animation)
     
@@ -229,6 +230,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
             avatarView.removeConstraints([bottomAvatarConstraint, trailingAvatarConstraint])
             countdownStartCountdown()
             addTapGestureRecognizer()
+            //addAvatarTapGestureRecognizer()
         }
     }
     
@@ -247,6 +249,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
             countdownLabel.text = "DONE!"
             self.removeTapGestureRecognizer()
             self.removeSwipeGestureRecognizer()
+            //self.removeAvatarTapGestureRecognizer()
             self.highScoreResult()
             self.mainMenuButton.isHidden = false
             self.dashLabel.isHidden = true

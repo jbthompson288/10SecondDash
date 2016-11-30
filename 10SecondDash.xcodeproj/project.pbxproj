@@ -15,6 +15,7 @@
 		E243D7CA1DA7159400723F18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E243D7C91DA7159400723F18 /* Assets.xcassets */; };
 		E243D7CD1DA7159400723F18 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E243D7CB1DA7159400723F18 /* LaunchScreen.storyboard */; };
 		E2CE536C1DE789C200432422 /* SwipeGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CE536B1DE789C200432422 /* SwipeGesture.swift */; };
+		E2CE536E1DE7920500432422 /* AvatarTapGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CE536D1DE7920500432422 /* AvatarTapGesture.swift */; };
 		E2E6DCB51DC02C5D00B62C2C /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E6DCB41DC02C5D00B62C2C /* MainMenuViewController.swift */; };
 		E2E6DCB71DC02C9200B62C2C /* AvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E6DCB61DC02C9200B62C2C /* AvatarViewController.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 		E243D7CC1DA7159400723F18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E243D7CE1DA7159400723F18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2CE536B1DE789C200432422 /* SwipeGesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeGesture.swift; sourceTree = "<group>"; };
+		E2CE536D1DE7920500432422 /* AvatarTapGesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarTapGesture.swift; sourceTree = "<group>"; };
 		E2E6DCB41DC02C5D00B62C2C /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		E2E6DCB61DC02C9200B62C2C /* AvatarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -49,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				E2CE536B1DE789C200432422 /* SwipeGesture.swift */,
+				E2CE536D1DE7920500432422 /* AvatarTapGesture.swift */,
 				E2351B501DD55C5C00DA4292 /* NSRange.swift */,
 			);
 			name = Extensions;
@@ -197,6 +200,7 @@
 				E237954F1DD76AB5006F52A2 /* HighScoresController.swift in Sources */,
 				E2E6DCB71DC02C9200B62C2C /* AvatarViewController.swift in Sources */,
 				E2E6DCB51DC02C5D00B62C2C /* MainMenuViewController.swift in Sources */,
+				E2CE536E1DE7920500432422 /* AvatarTapGesture.swift in Sources */,
 				E237954C1DD769F8006F52A2 /* HighScore.swift in Sources */,
 				E2351B511DD55C5C00DA4292 /* NSRange.swift in Sources */,
 				E243D7C31DA7159400723F18 /* AppDelegate.swift in Sources */,
