@@ -248,7 +248,9 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
             countdownTimer.invalidate()
             countdownLabel.text = "DONE!"
             self.removeTapGestureRecognizer()
+            if self.swipe?.isEnabled == true {
             self.removeSwipeGestureRecognizer()
+            }
             //self.removeAvatarTapGestureRecognizer()
             self.highScoreResult()
             self.mainMenuButton.isHidden = false
