@@ -55,9 +55,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
         self.view.removeGestureRecognizer(tap!)
     }
     
-    ///Amination of the avatar to move around the screen clockwise
-    func handleTap() {
-        let travelDistance:CGFloat = 70
+    func moveAvatar(_ travelDistance: CGFloat) {
         let currentFrame = avatarView.frame
         let startingXPosition = avatarView.frame.origin.x
         let startingYPosition = avatarView.frame.origin.y
@@ -155,6 +153,11 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
         }
     }
     
+    ///Amination of the avatar to move around the screen clockwise
+    func handleTap() {
+        moveAvatar(70)
+    }
+    
     // MARK: - Image Selection Method
     
     func imageSelection() {
@@ -230,7 +233,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
             avatarView.removeConstraints([bottomAvatarConstraint, trailingAvatarConstraint])
             countdownStartCountdown()
             addTapGestureRecognizer()
-            //addAvatarTapGestureRecognizer()
+            addAvatarTapGestureRecognizer()
         }
     }
     
@@ -248,13 +251,13 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
             countdownTimer.invalidate()
             countdownLabel.text = "DONE!"
             self.removeTapGestureRecognizer()
-            if self.swipe?.isEnabled == true {
-            self.removeSwipeGestureRecognizer()
-            }
-            //self.removeAvatarTapGestureRecognizer()
             self.highScoreResult()
             self.mainMenuButton.isHidden = false
             self.dashLabel.isHidden = true
+            if self.swipe?.isEnabled == true {
+                self.swipe?.removeTarget(self, action: #selector(handleSwipe))
+            }
+            self.removeAvatarTapGestureRecognizer()
         }
     }
     
