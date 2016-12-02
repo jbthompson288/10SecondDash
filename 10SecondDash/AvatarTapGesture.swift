@@ -18,10 +18,6 @@ extension AvatarViewController {
         self.avatarView.addGestureRecognizer(self.avatarTap)
     }
     
-//    func removeAvatarTapGestureRecognizer() {
-//        self.avatarView.removeGestureRecognizer(avatarTap!)
-//    }
-    
     ///Amination of the avatar to move around the screen clockwise
     func handleAvatarTap() {
         moveAvatar(300)

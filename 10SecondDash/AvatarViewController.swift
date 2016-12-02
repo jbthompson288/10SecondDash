@@ -50,10 +50,6 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
         view.addGestureRecognizer(self.tap)
     }
     
-//    func removeTapGestureRecognizer() {
-//        self.view.removeGestureRecognizer(tap)
-//    }
-    
     func moveAvatar(_ travelDistance: CGFloat) {
         let currentFrame = avatarView.frame
         let startingXPosition = avatarView.frame.origin.x
