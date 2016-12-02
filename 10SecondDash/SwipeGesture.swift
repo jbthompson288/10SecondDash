@@ -13,13 +13,13 @@ extension AvatarViewController {
     
     func addSwipeGestureRecognizer() {
         self.swipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
-        self.swipe?.direction = [.down, .up]
-        view.addGestureRecognizer(self.swipe!)
+        self.swipe.direction = [.down, .up]
+        view.addGestureRecognizer(self.swipe)
     }
     
-    func removeSwipeGestureRecognizer() {
-        self.view.removeGestureRecognizer(swipe!)
-    }
+//    func removeSwipeGestureRecognizer() {
+//        self.view.removeGestureRecognizer(swipe!)
+//    }
     
     ///Amination of the avatar to move around the screen clockwise
     func handleSwipe() {

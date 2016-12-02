@@ -32,14 +32,14 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
     var timeRemaining: TimeInterval?
     var scoreLabelText: Double = 0.00
     let pointsAdded: Double = 0.25
-    var tap: UITapGestureRecognizer?
     var dashTimer = Timer()
     var dashCount = 4
     var countdownTimer = Timer()
     var countdownCount = 10
     var highScore = HighScoresController.shared.load()
-    var swipe: UISwipeGestureRecognizer?
-    var avatarTap: UITapGestureRecognizer?
+    var tap = UITapGestureRecognizer()
+    var swipe = UISwipeGestureRecognizer()
+    var avatarTap = UITapGestureRecognizer()
     
     // MARK: - Tap Gesture Methods (Animation)
     
@@ -47,12 +47,12 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
     func addTapGestureRecognizer() {
         self.tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.isUserInteractionEnabled = true
-        view.addGestureRecognizer(self.tap!)
+        view.addGestureRecognizer(self.tap)
     }
     
-    func removeTapGestureRecognizer() {
-        self.view.removeGestureRecognizer(tap!)
-    }
+//    func removeTapGestureRecognizer() {
+//        self.view.removeGestureRecognizer(tap)
+//    }
     
     func moveAvatar(_ travelDistance: CGFloat) {
         let currentFrame = avatarView.frame
@@ -142,7 +142,7 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
                 self.scoreLabelText += self.pointsAdded
                 self.scoreLabel.text = String(self.scoreLabelText)
                 self.bottomRightImageRotation()
-                self.swipe?.isEnabled = true
+                self.swipe.isEnabled = true
             })
         } else if startingYPosition < bottomRightEndingYPosition && avatarView.frame.origin.x == topRightEndingXPosition {
             imageSelection()
@@ -231,8 +231,8 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
             dashLabel.text = "DASH!"
             avatarView.removeConstraints([bottomAvatarConstraint, trailingAvatarConstraint])
             countdownStartCountdown()
-            self.tap?.isEnabled = true
-            self.avatarTap?.isEnabled = true
+            self.tap.isEnabled = true
+            self.avatarTap.isEnabled = true
         }
     }
     
@@ -249,9 +249,9 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
         } else {
             countdownTimer.invalidate()
             countdownLabel.text = "DONE!"
-            self.tap?.isEnabled = false
-            self.swipe?.isEnabled = false
-            self.avatarTap?.isEnabled = false
+            self.tap.isEnabled = false
+            self.swipe.isEnabled = false
+            self.avatarTap.isEnabled = false
             self.highScoreResult()
             self.mainMenuButton.isHidden = false
             self.dashLabel.isHidden = true
@@ -294,9 +294,9 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
         self.addTapGestureRecognizer()
         self.addSwipeGestureRecognizer()
         self.addAvatarTapGestureRecognizer()
-        self.tap?.isEnabled = false
-        self.swipe?.isEnabled = false
-        self.avatarTap?.isEnabled = false
+        self.tap.isEnabled = false
+        self.swipe.isEnabled = false
+        self.avatarTap.isEnabled = false
     }
     
     
