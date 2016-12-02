@@ -24,6 +24,7 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var widthAvatarConstraint: NSLayoutConstraint!
     @IBOutlet weak var trailingAvatarConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainMenuButton: UIButton!
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet var tap: UITapGestureRecognizer!
     @IBOutlet var swipeDownAndUp: UISwipeGestureRecognizer!
     @IBOutlet var avatarTap: UITapGestureRecognizer!
@@ -286,6 +287,9 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
         self.bestDashRunLabel.isHidden = true
         self.highScoreLabel.isHidden = true
         self.mainMenuButton.isHidden = true
+        view.layoutIfNeeded()
+        mainMenuButton.frame = CGRect(x: view.frame.width / 2.0 - mainMenuButton.frame.width / 2, y: view.frame.height - 120, width: mainMenuButton.frame.width, height: mainMenuButton.frame.height)
+        stackView.frame = CGRect(x: view.frame.width / 2.0 - stackView.frame.width / 2, y: view.frame.height - 550, width: stackView.frame.width, height: stackView.frame.height)
     }
     
     override func viewDidLoad() {

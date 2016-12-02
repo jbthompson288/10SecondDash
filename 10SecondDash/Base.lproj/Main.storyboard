@@ -21,23 +21,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Np6-sM-RJb">
-                                <rect key="frame" x="0.0" y="28" width="414" height="213"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="run1" translatesAutoresizingMaskIntoConstraints="NO" id="DDi-sN-ldO">
+                                <rect key="frame" x="172" y="333" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="mdw-Ep-QsZ"/>
+                                    <constraint firstAttribute="height" constant="70" id="ny4-Gj-8kR"/>
+                                </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="run1" translatesAutoresizingMaskIntoConstraints="NO" id="DDi-sN-ldO">
-                                <rect key="frame" x="172" y="298" width="70" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dvw-OP-drQ" userLabel="Avatar Button">
-                                <rect key="frame" x="172" y="298" width="70" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dvw-OP-drQ" userLabel="Avatar Button">
+                                <rect key="frame" x="172" y="333" width="70" height="70"/>
                                 <connections>
                                     <segue destination="wbH-G1-Naa" kind="show" animates="NO" id="3GS-bs-eVW"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="DDi-sN-ldO" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ETL-ec-1pa"/>
+                            <constraint firstItem="Dvw-OP-drQ" firstAttribute="trailing" secondItem="DDi-sN-ldO" secondAttribute="trailing" id="eoC-v4-sM1"/>
+                            <constraint firstItem="Dvw-OP-drQ" firstAttribute="bottom" secondItem="DDi-sN-ldO" secondAttribute="bottom" id="iHV-4z-5Ap"/>
+                            <constraint firstItem="Dvw-OP-drQ" firstAttribute="top" secondItem="DDi-sN-ldO" secondAttribute="top" id="oAJ-u4-P3q"/>
+                            <constraint firstItem="DDi-sN-ldO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vHM-N0-cao"/>
+                            <constraint firstItem="Dvw-OP-drQ" firstAttribute="leading" secondItem="DDi-sN-ldO" secondAttribute="leading" id="wu6-hh-mXJ"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="avatarImageView" destination="DDi-sN-ldO" id="tfb-ic-Ynv"/>
@@ -59,6 +65,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="start" translatesAutoresizingMaskIntoConstraints="NO" id="B5o-Dz-bVl">
+                                <rect key="frame" x="344" y="666" width="70" height="70"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="Xdp-o8-JS9"/>
+                                    <constraint firstAttribute="height" constant="70" id="xE5-Ht-ukT"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Cu3-k0-pdD" appends="YES" id="uhE-lS-pgN"/>
+                                </connections>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="HLC-4e-ELd">
                                 <rect key="frame" x="113" y="90" width="193" height="216"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -107,17 +124,6 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="start" translatesAutoresizingMaskIntoConstraints="NO" id="B5o-Dz-bVl">
-                                <rect key="frame" x="344" y="666" width="70" height="70"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="Xdp-o8-JS9"/>
-                                    <constraint firstAttribute="height" constant="70" id="xE5-Ht-ukT"/>
-                                </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Cu3-k0-pdD" appends="YES" id="uhE-lS-pgN"/>
-                                </connections>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LcG-Pv-99H">
                                 <rect key="frame" x="113" y="516" width="189" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -161,6 +167,7 @@
                         <outlet property="highScoreLabel" destination="L24-Um-e9g" id="2M1-Fp-VfZ"/>
                         <outlet property="mainMenuButton" destination="LcG-Pv-99H" id="8L8-0x-73b"/>
                         <outlet property="scoreLabel" destination="P03-6y-L84" id="HkP-MY-f5P"/>
+                        <outlet property="stackView" destination="HLC-4e-ELd" id="KYT-h0-FTL"/>
                         <outlet property="swipeDownAndUp" destination="31f-N8-7Be" id="RqQ-DA-lIq"/>
                         <outlet property="swipeLeftAndRight" destination="WWH-pe-tvq" id="moB-0o-0GP"/>
                         <outlet property="tap" destination="eJ8-bK-B0t" id="9NR-50-nqF"/>
