@@ -24,6 +24,10 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var widthAvatarConstraint: NSLayoutConstraint!
     @IBOutlet weak var trailingAvatarConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainMenuButton: UIButton!
+    @IBOutlet var tap: UITapGestureRecognizer!
+    @IBOutlet var swipeDownAndUp: UISwipeGestureRecognizer!
+    @IBOutlet var avatarTap: UITapGestureRecognizer!
+    @IBOutlet var swipeLeftAndRight: UISwipeGestureRecognizer!
     
     
     // MARK: - Properties
@@ -37,19 +41,9 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
     var countdownTimer = Timer()
     var countdownCount = 10
     var highScore = HighScoresController.shared.load()
-    var tap = UITapGestureRecognizer()
-    var swipe = UISwipeGestureRecognizer()
-    var avatarTap = UITapGestureRecognizer()
     
-    // MARK: - Tap Gesture Methods (Animation)
     
-    ///Allows the full screen to be tapped to initiate the animation
-    func addTapGestureRecognizer() {
-        self.tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        view.isUserInteractionEnabled = true
-        view.addGestureRecognizer(self.tap)
-    }
-    
+    ///Amination of the avatar to move around the screen clockwise
     func moveAvatar(_ travelDistance: CGFloat) {
         let currentFrame = avatarView.frame
         let startingXPosition = avatarView.frame.origin.x
@@ -138,7 +132,8 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
                 self.scoreLabelText += self.pointsAdded
                 self.scoreLabel.text = String(self.scoreLabelText)
                 self.bottomRightImageRotation()
-                self.swipe.isEnabled = true
+                self.swipeDownAndUp.isEnabled = true
+                self.swipeLeftAndRight.isEnabled = true
             })
         } else if startingYPosition < bottomRightEndingYPosition && avatarView.frame.origin.x == topRightEndingXPosition {
             imageSelection()
@@ -148,9 +143,16 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    ///Amination of the avatar to move around the screen clockwise
-    func handleTap() {
+    @IBAction func handleTap() {
         moveAvatar(70)
+    }
+    
+    @IBAction func handleSwipe() {
+        moveAvatar(170)
+    }
+    
+    @IBAction func handleAvatarTap() {
+        moveAvatar(300)
     }
     
     // MARK: - Image Selection Method
@@ -246,7 +248,8 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
             countdownTimer.invalidate()
             countdownLabel.text = "DONE!"
             self.tap.isEnabled = false
-            self.swipe.isEnabled = false
+            self.swipeDownAndUp.isEnabled = false
+            self.swipeLeftAndRight.isEnabled = false
             self.avatarTap.isEnabled = false
             self.highScoreResult()
             self.mainMenuButton.isHidden = false
@@ -287,11 +290,11 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.addTapGestureRecognizer()
-        self.addSwipeGestureRecognizer()
-        self.addAvatarTapGestureRecognizer()
         self.tap.isEnabled = false
-        self.swipe.isEnabled = false
+        self.swipeDownAndUp.isEnabled = false
+        self.swipeDownAndUp.direction = [.down, .up]
+        self.swipeLeftAndRight.isEnabled = false
+        self.swipeLeftAndRight.direction = [.left, .right]
         self.avatarTap.isEnabled = false
     }
     

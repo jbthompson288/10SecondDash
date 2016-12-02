@@ -109,10 +109,14 @@
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="start" translatesAutoresizingMaskIntoConstraints="NO" id="B5o-Dz-bVl">
                                 <rect key="frame" x="344" y="666" width="70" height="70"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="Xdp-o8-JS9"/>
                                     <constraint firstAttribute="height" constant="70" id="xE5-Ht-ukT"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Cu3-k0-pdD" appends="YES" id="uhE-lS-pgN"/>
+                                </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LcG-Pv-99H">
                                 <rect key="frame" x="113" y="516" width="189" height="30"/>
@@ -134,12 +138,19 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="B5o-Dz-bVl" secondAttribute="trailing" id="2V5-6W-GzE"/>
                             <constraint firstItem="sdV-CE-IsP" firstAttribute="top" secondItem="B5o-Dz-bVl" secondAttribute="bottom" id="kQu-fE-Xzn"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="eJ8-bK-B0t" appends="YES" id="vnR-00-kys"/>
+                            <outletCollection property="gestureRecognizers" destination="31f-N8-7Be" appends="YES" id="o6M-Xr-Vje"/>
+                            <outletCollection property="gestureRecognizers" destination="WWH-pe-tvq" appends="YES" id="PZh-JH-iTL"/>
+                        </connections>
                     </view>
                     <connections>
+                        <outlet property="avatarTap" destination="Cu3-k0-pdD" id="CEL-dp-i0F"/>
                         <outlet property="avatarView" destination="B5o-Dz-bVl" id="dv0-3c-TT2"/>
                         <outlet property="bestDashRunLabel" destination="HVL-Ew-iK1" id="ALZ-Un-YHp"/>
                         <outlet property="bottomAvatarConstraint" destination="kQu-fE-Xzn" id="xQG-KP-HPm"/>
@@ -150,11 +161,34 @@
                         <outlet property="highScoreLabel" destination="L24-Um-e9g" id="2M1-Fp-VfZ"/>
                         <outlet property="mainMenuButton" destination="LcG-Pv-99H" id="8L8-0x-73b"/>
                         <outlet property="scoreLabel" destination="P03-6y-L84" id="HkP-MY-f5P"/>
+                        <outlet property="swipeDownAndUp" destination="31f-N8-7Be" id="RqQ-DA-lIq"/>
+                        <outlet property="swipeLeftAndRight" destination="WWH-pe-tvq" id="moB-0o-0GP"/>
+                        <outlet property="tap" destination="eJ8-bK-B0t" id="9NR-50-nqF"/>
                         <outlet property="trailingAvatarConstraint" destination="2V5-6W-GzE" id="oKC-PE-rcn"/>
                         <outlet property="widthAvatarConstraint" destination="Xdp-o8-JS9" id="Uq3-g0-amj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r15-Wr-APC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="eJ8-bK-B0t">
+                    <connections>
+                        <action selector="handleTap" destination="wbH-G1-Naa" id="lrB-LL-gy7"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="31f-N8-7Be">
+                    <connections>
+                        <action selector="handleSwipe" destination="wbH-G1-Naa" id="YwC-iX-OPp"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <tapGestureRecognizer id="Cu3-k0-pdD">
+                    <connections>
+                        <action selector="handleAvatarTap" destination="wbH-G1-Naa" id="bVh-FA-5MX"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="WWH-pe-tvq">
+                    <connections>
+                        <action selector="handleSwipe" destination="wbH-G1-Naa" id="6OE-X2-HHD"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1178.985507246377" y="122.69021739130436"/>
         </scene>

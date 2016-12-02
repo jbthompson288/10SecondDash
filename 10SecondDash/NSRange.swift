@@ -23,7 +23,7 @@ extension NSRange {
 
 
 //NO LONGER NEEDED - TOOK OUT OF AVATARVIEWCONTROLLER
-// MARK: - Text Field Limit Method (NO LONGER NEEDED)
+// MARK: - Text Field Limit Method (NO LONGER NEEDED AT THIS TIME)
 
 //    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 //        let currentText = textField.text ?? ""
