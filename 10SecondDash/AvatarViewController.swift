@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITextFieldDelegate {
+class AvatarViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - IBOutlets
     
@@ -46,7 +46,6 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
     ///Allows the full screen to be tapped to initiate the animation
     func addTapGestureRecognizer() {
         self.tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        self.tap?.delegate = self
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(self.tap!)
     }
@@ -143,7 +142,7 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
                 self.scoreLabelText += self.pointsAdded
                 self.scoreLabel.text = String(self.scoreLabelText)
                 self.bottomRightImageRotation()
-                self.addSwipeGestureRecognizer()
+                self.swipe?.isEnabled = true
             })
         } else if startingYPosition < bottomRightEndingYPosition && avatarView.frame.origin.x == topRightEndingXPosition {
             imageSelection()
@@ -232,8 +231,8 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
             dashLabel.text = "DASH!"
             avatarView.removeConstraints([bottomAvatarConstraint, trailingAvatarConstraint])
             countdownStartCountdown()
-            addTapGestureRecognizer()
-            addAvatarTapGestureRecognizer()
+            self.tap?.isEnabled = true
+            self.avatarTap?.isEnabled = true
         }
     }
     
@@ -250,14 +249,12 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
         } else {
             countdownTimer.invalidate()
             countdownLabel.text = "DONE!"
-            self.removeTapGestureRecognizer()
+            self.tap?.isEnabled = false
+            self.swipe?.isEnabled = false
+            self.avatarTap?.isEnabled = false
             self.highScoreResult()
             self.mainMenuButton.isHidden = false
             self.dashLabel.isHidden = true
-            if self.swipe?.isEnabled == true {
-                self.swipe?.removeTarget(self, action: #selector(handleSwipe))
-            }
-            self.removeAvatarTapGestureRecognizer()
         }
     }
     
@@ -291,4 +288,21 @@ class AvatarViewController: UIViewController, UIGestureRecognizerDelegate, UITex
         self.highScoreLabel.isHidden = true
         self.mainMenuButton.isHidden = true
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.addTapGestureRecognizer()
+        self.addSwipeGestureRecognizer()
+        self.addAvatarTapGestureRecognizer()
+        self.tap?.isEnabled = false
+        self.swipe?.isEnabled = false
+        self.avatarTap?.isEnabled = false
+    }
+    
+    
+    
+    
+    
+    
+    
 }

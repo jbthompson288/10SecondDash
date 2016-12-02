@@ -14,7 +14,6 @@ extension AvatarViewController {
     
     func addAvatarTapGestureRecognizer() {
         self.avatarTap = UITapGestureRecognizer(target: self, action: #selector(handleAvatarTap))
-        self.avatarTap?.delegate = self
         self.avatarView.isUserInteractionEnabled = true
         self.avatarView.addGestureRecognizer(self.avatarTap!)
     }
