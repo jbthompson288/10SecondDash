@@ -135,6 +135,7 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
                 self.bottomRightImageRotation()
                 self.swipeDownAndUp.isEnabled = true
                 self.swipeLeftAndRight.isEnabled = true
+                self.addTime()
             })
         } else if startingYPosition < bottomRightEndingYPosition && avatarView.frame.origin.x == topRightEndingXPosition {
             imageSelection()
@@ -256,6 +257,14 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
             self.mainMenuButton.isHidden = false
             self.dashLabel.isHidden = true
         }
+    }
+    
+    func addTime() {
+        if Int(scoreLabelText) % 1 == 0 {
+            countdownCount += 5
+            countdownUpdate()
+        }
+        
     }
     
     ///Checks if the current high score is greater than previous high score
