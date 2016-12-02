@@ -15,6 +15,9 @@ extension AvatarViewController {
         self.swipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
         self.swipe?.delegate = self
         self.swipe?.direction = .down
+        self.swipe?.direction = .up
+        self.swipe?.direction = .left
+        self.swipe?.direction = .right
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(self.swipe!)
     }

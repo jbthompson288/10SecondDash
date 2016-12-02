@@ -329,7 +329,7 @@
 				DEVELOPMENT_TEAM = BYDNUU5NS7;
 				INFOPLIST_FILE = 10SecondDash/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jbthompson.10SecondDash;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jbthompson2.10SecondDash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -342,7 +342,7 @@
 				DEVELOPMENT_TEAM = BYDNUU5NS7;
 				INFOPLIST_FILE = 10SecondDash/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jbthompson.10SecondDash;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jbthompson2.10SecondDash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
