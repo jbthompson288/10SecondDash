@@ -41,7 +41,7 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
     var dashTimer = Timer()
     var dashCount = 4
     var countdownTimer = Timer()
-    var countdownCount = 10
+    var countdownCount: Double = 10
     var highScore = HighScoresController.shared.load()
     
     
@@ -144,16 +144,44 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    func enableGestures() {
+        self.tap.isEnabled = true
+        self.avatarTap.isEnabled = true
+        self.swipeDownAndUp.isEnabled = true
+        self.swipeLeftAndRight.isEnabled = true
+    }
+    
+    func disableGestures() {
+        self.tap.isEnabled = false
+        self.avatarTap.isEnabled = false
+        self.swipeDownAndUp.isEnabled = false
+        self.swipeLeftAndRight.isEnabled = false
+    }
+    
     @IBAction func handleTap() {
+        if countdownCount < 0.1 {
+            self.disableGestures()
+        } else {
+            self.enableGestures()
         moveAvatar(70)
+        }
     }
     
     @IBAction func handleSwipe() {
-        moveAvatar(170)
+        if countdownCount < 0.1 {
+            self.disableGestures()
+        } else {
+            self.enableGestures()
+            moveAvatar(170)
+        }
     }
     
     @IBAction func handleAvatarTap() {
-        moveAvatar(300)
+        if countdownCount < 0.1 {
+            self.disableGestures()
+        } else {
+            moveAvatar(300)
+        }
     }
     
     // MARK: - Image Selection Method
@@ -230,30 +258,24 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
             dashLabel.text = "DASH!"
             avatarView.removeConstraints([bottomAvatarConstraint, trailingAvatarConstraint])
             countdownStartCountdown()
-            self.tap.isEnabled = true
-            self.avatarTap.isEnabled = true
-            self.swipeDownAndUp.isEnabled = true
-            self.swipeLeftAndRight.isEnabled = true
+            self.enableGestures()
         }
     }
     
     // MARK: - Timer Countdown Methods
     
     func countdownStartCountdown(){
-        countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countdownUpdate), userInfo: nil, repeats: true)
+        countdownTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(countdownUpdate), userInfo: nil, repeats: true)
     }
     
     func countdownUpdate() {
-        if (countdownCount > 1) {
-            countdownCount -= 1
-            countdownLabel.text = "\(countdownCount)"
+        if (countdownCount > 0.1) {
+            countdownCount -= 0.1
+            countdownLabel.text = "\(Int(ceil(countdownCount)))"
         } else {
             countdownTimer.invalidate()
             countdownLabel.text = "DONE!"
-            self.tap.isEnabled = false
-            self.swipeDownAndUp.isEnabled = false
-            self.swipeLeftAndRight.isEnabled = false
-            self.avatarTap.isEnabled = false
+            self.disableGestures()
             self.highScoreResult()
             self.mainMenuButton.isHidden = false
             self.dashLabel.isHidden = true
