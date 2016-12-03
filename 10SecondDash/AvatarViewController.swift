@@ -291,15 +291,11 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
     }
     
     func plus5Animation() {
-        self.plus5Label.isHidden = false
+        self.plus5Label.alpha = 1.0
         self.plus5Label.text = "+5"
         UIView.animate(withDuration: 1.0, animations: {
             self.plus5Label.alpha = 0.0
-        }, completion: {(value: Bool) in
-            self.plus5Label.isHidden = true
-            self.plus5Label.alpha = 1.0
         })
-        
     }
     
     ///Checks if the current high score is greater than previous high score
@@ -331,7 +327,7 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
         self.bestDashRunLabel.isHidden = true
         self.highScoreLabel.isHidden = true
         self.mainMenuButton.isHidden = true
-        self.plus5Label.isHidden = true
+        self.plus5Label.alpha = 0.0
         view.layoutIfNeeded()
         mainMenuButton.frame = CGRect(x: view.frame.width / 2.0 - mainMenuButton.frame.width / 2, y: view.frame.height - 120, width: mainMenuButton.frame.width, height: mainMenuButton.frame.height)
         stackView.frame = CGRect(x: view.frame.width / 2.0 - stackView.frame.width / 2, y: view.frame.height - 550, width: stackView.frame.width, height: stackView.frame.height)

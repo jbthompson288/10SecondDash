@@ -65,7 +65,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="start" translatesAutoresizingMaskIntoConstraints="NO" id="B5o-Dz-bVl">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="start" translatesAutoresizingMaskIntoConstraints="NO" id="B5o-Dz-bVl">
                                 <rect key="frame" x="344" y="666" width="70" height="70"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -201,7 +201,7 @@
                 </swipeGestureRecognizer>
                 <tapGestureRecognizer id="Cu3-k0-pdD">
                     <connections>
-                        <action selector="handleAvatarTap" destination="wbH-G1-Naa" id="bVh-FA-5MX"/>
+                        <action selector="handleAvatarTap" destination="wbH-G1-Naa" id="7Ro-iH-jAe"/>
                     </connections>
                 </tapGestureRecognizer>
                 <swipeGestureRecognizer direction="right" id="WWH-pe-tvq">
