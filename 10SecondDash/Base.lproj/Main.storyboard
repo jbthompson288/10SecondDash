@@ -77,7 +77,7 @@
                                 </connections>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="HLC-4e-ELd">
-                                <rect key="frame" x="113" y="90" width="193" height="216"/>
+                                <rect key="frame" x="113" y="90" width="193" height="240"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="READY?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSW-4B-zaO">
@@ -120,6 +120,18 @@
                                         <rect key="frame" x="0.0" y="187.33333333333334" width="193" height="28.333333333333314"/>
                                         <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="20"/>
                                         <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7H-UZ-DQK">
+                                        <rect key="frame" x="0.0" y="215.66666666666663" width="193" height="24.333333333333343"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="+5">
+                                                <attributes>
+                                                    <font key="NSFont" size="17" name="ChalkboardSE-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -166,6 +178,7 @@
                         <outlet property="highScoreAndTryAgainLabel" destination="ptX-31-PDf" id="dZI-GI-pfY"/>
                         <outlet property="highScoreLabel" destination="L24-Um-e9g" id="2M1-Fp-VfZ"/>
                         <outlet property="mainMenuButton" destination="LcG-Pv-99H" id="8L8-0x-73b"/>
+                        <outlet property="plus5Label" destination="z7H-UZ-DQK" id="GBr-NO-HkO"/>
                         <outlet property="scoreLabel" destination="P03-6y-L84" id="HkP-MY-f5P"/>
                         <outlet property="stackView" destination="HLC-4e-ELd" id="KYT-h0-FTL"/>
                         <outlet property="swipeDownAndUp" destination="31f-N8-7Be" id="RqQ-DA-lIq"/>

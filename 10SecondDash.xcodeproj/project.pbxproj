@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E2351B511DD55C5C00DA4292 /* NSRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2351B501DD55C5C00DA4292 /* NSRange.swift */; };
 		E237954C1DD769F8006F52A2 /* HighScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E237954B1DD769F8006F52A2 /* HighScore.swift */; };
 		E237954F1DD76AB5006F52A2 /* HighScoresController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E237954E1DD76AB5006F52A2 /* HighScoresController.swift */; };
 		E243D7C31DA7159400723F18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E243D7C21DA7159400723F18 /* AppDelegate.swift */; };
@@ -19,7 +18,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E2351B501DD55C5C00DA4292 /* NSRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSRange.swift; sourceTree = "<group>"; };
 		E237954B1DD769F8006F52A2 /* HighScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScore.swift; sourceTree = "<group>"; };
 		E237954E1DD76AB5006F52A2 /* HighScoresController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoresController.swift; sourceTree = "<group>"; };
 		E243D7BF1DA7159400723F18 /* 10SecondDash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 10SecondDash.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,15 +41,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E237954A1DD76936006F52A2 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				E2351B501DD55C5C00DA4292 /* NSRange.swift */,
-			);
-			name = Extensions;
-			path = 10SecondDash;
-			sourceTree = "<group>";
-		};
 		E237954D1DD76A9A006F52A2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -64,7 +53,6 @@
 			isa = PBXGroup;
 			children = (
 				E243D7C11DA7159400723F18 /* 10SecondDash */,
-				E237954A1DD76936006F52A2 /* Extensions */,
 				E243D7C01DA7159400723F18 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -194,7 +182,6 @@
 				E2E6DCB71DC02C9200B62C2C /* AvatarViewController.swift in Sources */,
 				E2E6DCB51DC02C5D00B62C2C /* MainMenuViewController.swift in Sources */,
 				E237954C1DD769F8006F52A2 /* HighScore.swift in Sources */,
-				E2351B511DD55C5C00DA4292 /* NSRange.swift in Sources */,
 				E243D7C31DA7159400723F18 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

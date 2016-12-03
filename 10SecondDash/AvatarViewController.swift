@@ -29,6 +29,7 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var swipeDownAndUp: UISwipeGestureRecognizer!
     @IBOutlet var avatarTap: UITapGestureRecognizer!
     @IBOutlet var swipeLeftAndRight: UISwipeGestureRecognizer!
+    @IBOutlet weak var plus5Label: UILabel!
     
     
     // MARK: - Properties
@@ -133,8 +134,6 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
                 self.scoreLabelText += self.pointsAdded
                 self.scoreLabel.text = String(self.scoreLabelText)
                 self.bottomRightImageRotation()
-                self.swipeDownAndUp.isEnabled = true
-                self.swipeLeftAndRight.isEnabled = true
                 self.addTime()
             })
         } else if startingYPosition < bottomRightEndingYPosition && avatarView.frame.origin.x == topRightEndingXPosition {
@@ -233,6 +232,8 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
             countdownStartCountdown()
             self.tap.isEnabled = true
             self.avatarTap.isEnabled = true
+            self.swipeDownAndUp.isEnabled = true
+            self.swipeLeftAndRight.isEnabled = true
         }
     }
     
@@ -262,8 +263,20 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
     func addTime() {
         if Int(scoreLabelText) % 1 == 0 {
             countdownCount += 5
+            self.plus5Animation()
             countdownUpdate()
         }
+    }
+    
+    func plus5Animation() {
+        self.plus5Label.isHidden = false
+        self.plus5Label.text = "+5"
+        UIView.animate(withDuration: 1.0, animations: {
+            self.plus5Label.alpha = 0.0
+        }, completion: {(value: Bool) in
+            self.plus5Label.isHidden = true
+            self.plus5Label.alpha = 1.0
+        })
         
     }
     
@@ -296,6 +309,7 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
         self.bestDashRunLabel.isHidden = true
         self.highScoreLabel.isHidden = true
         self.mainMenuButton.isHidden = true
+        self.plus5Label.isHidden = true
         view.layoutIfNeeded()
         mainMenuButton.frame = CGRect(x: view.frame.width / 2.0 - mainMenuButton.frame.width / 2, y: view.frame.height - 120, width: mainMenuButton.frame.width, height: mainMenuButton.frame.height)
         stackView.frame = CGRect(x: view.frame.width / 2.0 - stackView.frame.width / 2, y: view.frame.height - 550, width: stackView.frame.width, height: stackView.frame.height)
