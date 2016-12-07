@@ -41,7 +41,7 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
     var dashTimer = Timer()
     var dashCount = 4
     var countdownTimer = Timer()
-    var countdownCount: Double = 100
+    var countdownCount: Double = 10
     var highScore = HighScoresController.shared.load()
     
     
