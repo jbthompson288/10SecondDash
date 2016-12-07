@@ -41,7 +41,7 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
     var dashTimer = Timer()
     var dashCount = 4
     var countdownTimer = Timer()
-    var countdownCount: Double = 10
+    var countdownCount: Double = 100
     var highScore = HighScoresController.shared.load()
     
     
@@ -94,7 +94,7 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
         
         //Scoring for top left corner
         
-        if startingXPosition < topRightEndingXPosition && avatarView.frame.origin.y == topLeftEndingYPosition && startingYPosition <= travelDistance && avatarView.frame.origin.x == bottomLeftEndingXPosition {
+        if startingXPosition < topRightEndingXPosition && currentFrame.origin.y == topLeftEndingYPosition && startingYPosition <= travelDistance && avatarView.frame.origin.x == bottomLeftEndingXPosition {
             imageSelection()
             topLeftImageRotation()
             self.scoreLabelText += self.pointsAdded
@@ -283,7 +283,7 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
     }
     
     func addTime() {
-        if Int(scoreLabelText) % 1 == 0 {
+        if Int(scoreLabelText) % 4 == 0 {
             countdownCount += 5
             self.plus5Animation()
             countdownUpdate()
