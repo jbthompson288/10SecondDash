@@ -30,7 +30,9 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var avatarTap: UITapGestureRecognizer!
     @IBOutlet var swipeLeftAndRight: UISwipeGestureRecognizer!
     @IBOutlet weak var plus5Label: UILabel!
-    
+    @IBOutlet weak var tapScreenLabel: UILabel!
+    @IBOutlet weak var swipeScreenLabel: UILabel!
+    @IBOutlet weak var tapRunnerLabel: UILabel!
     
     // MARK: - Properties
     
@@ -259,6 +261,9 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
             avatarView.removeConstraints([bottomAvatarConstraint, trailingAvatarConstraint])
             countdownStartCountdown()
             self.enableGestures()
+            tapScreenLabel.alpha = 0.0
+            swipeScreenLabel.alpha = 0.0
+            tapRunnerLabel.alpha = 0.0
         }
     }
     

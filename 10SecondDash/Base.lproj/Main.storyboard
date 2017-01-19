@@ -86,7 +86,7 @@
                                 </connections>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="HLC-4e-ELd">
-                                <rect key="frame" x="113" y="90" width="193" height="240"/>
+                                <rect key="frame" x="113" y="90" width="193" height="313"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="READY?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSW-4B-zaO">
@@ -143,6 +143,24 @@
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Tap Screen = Fast" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eq8-PP-R3Z">
+                                        <rect key="frame" x="0.0" y="240" width="193" height="24.333333333333314"/>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Swipe Screen = Faster" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zv8-cV-qvt">
+                                        <rect key="frame" x="0.0" y="264.33333333333331" width="193" height="24.333333333333371"/>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Tap Runner = Fastest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Hc-im-gUS">
+                                        <rect key="frame" x="0.0" y="288.66666666666674" width="193" height="24.333333333333314"/>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LcG-Pv-99H">
@@ -192,7 +210,10 @@
                         <outlet property="stackView" destination="HLC-4e-ELd" id="KYT-h0-FTL"/>
                         <outlet property="swipeDownAndUp" destination="31f-N8-7Be" id="RqQ-DA-lIq"/>
                         <outlet property="swipeLeftAndRight" destination="WWH-pe-tvq" id="moB-0o-0GP"/>
+                        <outlet property="swipeScreenLabel" destination="Zv8-cV-qvt" id="uzQ-ez-Dio"/>
                         <outlet property="tap" destination="eJ8-bK-B0t" id="9NR-50-nqF"/>
+                        <outlet property="tapRunnerLabel" destination="2Hc-im-gUS" id="ceq-h0-ROh"/>
+                        <outlet property="tapScreenLabel" destination="Eq8-PP-R3Z" id="WrU-43-fvX"/>
                         <outlet property="trailingAvatarConstraint" destination="2V5-6W-GzE" id="oKC-PE-rcn"/>
                         <outlet property="widthAvatarConstraint" destination="Xdp-o8-JS9" id="Uq3-g0-amj"/>
                     </connections>
