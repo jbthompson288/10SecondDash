@@ -282,8 +282,10 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
             countdownLabel.text = "DONE!"
             self.disableGestures()
             self.highScoreResult()
-            self.mainMenuButton.isHidden = false
-            self.dashLabel.isHidden = true
+            _ = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { (timer) in
+                self.mainMenuButton.alpha = 1.0
+            })
+            self.dashLabel.alpha = 0.0
         }
     }
     
@@ -308,13 +310,13 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
         if self.scoreLabelText > self.highScore.score {
             _ = HighScoresController.shared.create(with: self.scoreLabelText)
             HighScoresController.shared.save()
-            self.highScoreAndTryAgainLabel.isHidden = false
+            self.highScoreAndTryAgainLabel.alpha = 1.0
             self.highScoreAndTryAgainLabel.text = "NEW HIGH SCORE!"
         } else {
-            self.highScoreAndTryAgainLabel.isHidden = false
+            self.highScoreAndTryAgainLabel.alpha = 1.0
             self.highScoreAndTryAgainLabel.text = "TRY AGAIN"
-            self.bestDashRunLabel.isHidden = false
-            self.highScoreLabel.isHidden = false
+            self.bestDashRunLabel.alpha = 1.0
+            self.highScoreLabel.alpha = 1.0
             self.highScoreLabel.text = String(self.highScore.score)
         }
     }
@@ -328,14 +330,14 @@ class AvatarViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.highScoreAndTryAgainLabel.isHidden = true
-        self.bestDashRunLabel.isHidden = true
-        self.highScoreLabel.isHidden = true
-        self.mainMenuButton.isHidden = true
+        self.highScoreAndTryAgainLabel.alpha = 0.0
+        self.bestDashRunLabel.alpha = 0.0
+        self.highScoreLabel.alpha = 0.0
+        self.mainMenuButton.alpha = 0.0
         self.plus5Label.alpha = 0.0
         view.layoutIfNeeded()
         mainMenuButton.frame = CGRect(x: view.frame.width / 2.0 - mainMenuButton.frame.width / 2, y: view.frame.height - 120, width: mainMenuButton.frame.width, height: mainMenuButton.frame.height)
-        stackView.frame = CGRect(x: view.frame.width / 2.0 - stackView.frame.width / 2, y: view.frame.height - 550, width: stackView.frame.width, height: stackView.frame.height)
+        stackView.frame = CGRect(x: view.frame.width / 2.0 - stackView.frame.width / 2, y: view.frame.height - 500, width: stackView.frame.width, height: stackView.frame.height)
     }
     
     override func viewDidLoad() {
